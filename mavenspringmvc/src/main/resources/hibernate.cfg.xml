@@ -16,8 +16,8 @@
     <mapping class="Entity.UnswBookActivityEntity"/>
     <mapping class="Entity.UnswBookAdminEntity"/>
     <mapping class="Entity.UnswBookFriendshipEntity"/>
-    <mapping class="Entity.UnswBookLikeEntity"/>
     <mapping class="Entity.UnswBookMessageEntity"/>
     <mapping class="Entity.UnswBookUserEntity"/>
+    <mapping class="Entity.UnswBookVoteEntity"/>
   </session-factory>
 </hibernate-configuration>

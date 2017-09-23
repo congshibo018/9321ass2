@@ -12,8 +12,8 @@ public class UnswBookMessageEntity {
     private String content;
     private String image;
     private Timestamp time;
-    private int like;
-    private int unlike;
+    private int thumbUp;
+    private int thumbDown;
     private String url;
 
     @Id
@@ -77,23 +77,23 @@ public class UnswBookMessageEntity {
     }
 
     @Basic
-    @Column(name = "like", nullable = false)
-    public int getLike() {
-        return like;
+    @Column(name = "thumbUp", nullable = false)
+    public int getThumbUp() {
+        return thumbUp;
     }
 
-    public void setLike(int like) {
-        this.like = like;
+    public void setThumbUp(int thumbUp) {
+        this.thumbUp = thumbUp;
     }
 
     @Basic
-    @Column(name = "unlike", nullable = false)
-    public int getUnlike() {
-        return unlike;
+    @Column(name = "thumbDown", nullable = false)
+    public int getThumbDown() {
+        return thumbDown;
     }
 
-    public void setUnlike(int unlike) {
-        this.unlike = unlike;
+    public void setThumbDown(int thumbDown) {
+        this.thumbDown = thumbDown;
     }
 
     @Basic
@@ -115,8 +115,8 @@ public class UnswBookMessageEntity {
 
         if (id != that.id) return false;
         if (userId != that.userId) return false;
-        if (like != that.like) return false;
-        if (unlike != that.unlike) return false;
+        if (thumbUp != that.thumbUp) return false;
+        if (thumbDown != that.thumbDown) return false;
         if (title != null ? !title.equals(that.title) : that.title != null) return false;
         if (content != null ? !content.equals(that.content) : that.content != null) return false;
         if (image != null ? !image.equals(that.image) : that.image != null) return false;
@@ -134,8 +134,8 @@ public class UnswBookMessageEntity {
         result = 31 * result + (content != null ? content.hashCode() : 0);
         result = 31 * result + (image != null ? image.hashCode() : 0);
         result = 31 * result + (time != null ? time.hashCode() : 0);
-        result = 31 * result + like;
-        result = 31 * result + unlike;
+        result = 31 * result + thumbUp;
+        result = 31 * result + thumbDown;
         result = 31 * result + (url != null ? url.hashCode() : 0);
         return result;
     }

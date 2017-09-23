@@ -1,6 +1,6 @@
 package Dao;
 
-import Entity.UnswBookFriendshipEntity;
+import Entity.UnswBookVoteEntity;
 import Util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -8,49 +8,55 @@ import org.hibernate.query.Query;
 import java.util.Iterator;
 import java.util.List;
 
-public class UnswBookFriendshipDAO {
+public class UnswBookVoteDAO {
 
-    public static void saveOrUpdate(UnswBookFriendshipEntity friendship){
+    public static void saveOrUpdate(UnswBookVoteEntity vote){
         Session session = HibernateUtil.SESSION_FACTORY.openSession();
         session.beginTransaction();
 
-        session.saveOrUpdate(friendship);
+        session.saveOrUpdate(vote);
         session.getTransaction().commit();
         session.close();
 
     }
 
-    public static UnswBookFriendshipEntity retrieve(String id){
+    public static UnswBookVoteEntity retrieve(String id){
         Session session = HibernateUtil.SESSION_FACTORY.openSession();
         session.beginTransaction();
 
-        UnswBookFriendshipEntity friendship = session.get(UnswBookFriendshipEntity.class,id);
+        UnswBookVoteEntity vote = session.get(UnswBookVoteEntity.class,id);
         session.getTransaction().commit();
         session.close();
-        return friendship;
+        return vote;
     }
 
-    public static List<Integer> getFriendByUserId(int uid){
+
+    public static int getVote(int uid,int mid){
         Session session = HibernateUtil.SESSION_FACTORY.openSession();
         session.beginTransaction();
 
-        String hql = "SELECT fid FROM UnswBookFriendshipEntity WHERE uid=:uid";
+        String hql = "FROM UnswBookVoteEntity WHERE userId=:uid and messageId=:mid";
         Query q = session.createQuery(hql);
         q.setParameter("uid",uid);
-        if (q==null){
-            return null;
-        }
-        List list = q.list();
+        q.setParameter("mid",mid);
 
+        List list = q.list();
+        UnswBookVoteEntity vote = null;
+        Iterator iter = list.listIterator();
+        int like=0;
+        if (iter.hasNext()){
+            vote = (UnswBookVoteEntity) iter.next();
+            like = vote.getThumbUp();
+        }
         session.close();
-        return list;
+        return like;
     }
 
-    public void delete(UnswBookFriendshipEntity friendship){
+    public void delete(UnswBookVoteEntity vote){
         Session session = HibernateUtil.SESSION_FACTORY.openSession();
         session.beginTransaction();
 
-        session.remove(friendship);
+        session.remove(vote);
         session.getTransaction().commit();
         session.close();
     }

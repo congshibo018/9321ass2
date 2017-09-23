@@ -11,11 +11,32 @@
 <head>
     <title>mainpage</title>
 </head>
-<body>
+<body><a href = "advancedSearch.jsp">advancedSearch</a>
 <c:forEach var="messagelist" items="${messageList}">
     <tr>
         <td>${messagelist.title}</td>
     </tr>
+    <tr>
+        <td>${messagelist.content}</td>
+    </tr>
+    <tr>
+        <td>${messagelist.image}</td>
+    </tr>
+    <tr>
+        <td>${messagelist.time}</td>
+    </tr>
+    <tr>
+        <td>${messagelist.thumbUp}</td>
+    </tr>
+    <tr>
+        <td>${messagelist.thumbDown}</td>
+    </tr>
 </c:forEach>
+<form action="postMessage" method="post">
+    title:<input type = "text" name="title"><br>
+    content:<input type = "text" name ="content"><br>
+    url:<input type = "text" name ="url"><br>
+
+    <input type="submit" value = "post"></form>
 </body>
 </html>

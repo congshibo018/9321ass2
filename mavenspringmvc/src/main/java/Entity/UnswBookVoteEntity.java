@@ -3,12 +3,12 @@ package Entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "UNSWBookLike", schema = "UNSWBook")
-public class UnswBookLikeEntity {
+@Table(name = "UNSWBookVote", schema = "UNSWBook")
+public class UnswBookVoteEntity {
     private int id;
     private int userId;
     private int messageId;
-    private int like;
+    private int thumbUp;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -41,13 +41,13 @@ public class UnswBookLikeEntity {
     }
 
     @Basic
-    @Column(name = "like", nullable = false)
-    public int getLike() {
-        return like;
+    @Column(name = "thumbUp", nullable = false)
+    public int getThumbUp() {
+        return thumbUp;
     }
 
-    public void setLike(int like) {
-        this.like = like;
+    public void setThumbUp(int thumbUp) {
+        this.thumbUp = thumbUp;
     }
 
     @Override
@@ -55,12 +55,12 @@ public class UnswBookLikeEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        UnswBookLikeEntity that = (UnswBookLikeEntity) o;
+        UnswBookVoteEntity that = (UnswBookVoteEntity) o;
 
         if (id != that.id) return false;
         if (userId != that.userId) return false;
         if (messageId != that.messageId) return false;
-        if (like != that.like) return false;
+        if (thumbUp != that.thumbUp) return false;
 
         return true;
     }
@@ -70,7 +70,7 @@ public class UnswBookLikeEntity {
         int result = id;
         result = 31 * result + userId;
         result = 31 * result + messageId;
-        result = 31 * result + like;
+        result = 31 * result + thumbUp;
         return result;
     }
 }

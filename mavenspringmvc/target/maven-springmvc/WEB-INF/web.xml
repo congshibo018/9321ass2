@@ -19,4 +19,21 @@
         <servlet-name>registeServlet</servlet-name>
         <url-pattern>/registe</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>advancedSearchServlet</servlet-name>
+        <servlet-class>Servlet.advancedSearchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>advancedSearchServlet</servlet-name>
+        <url-pattern>/advancedSearch</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>postMessageServlet</servlet-name>
+        <servlet-class>Servlet.postMessageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>postMessageServlet</servlet-name>
+        <url-pattern>/postMessage</url-pattern>
+    </servlet-mapping>
 </web-app>

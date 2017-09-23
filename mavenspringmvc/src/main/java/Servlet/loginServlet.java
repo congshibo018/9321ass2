@@ -32,7 +32,7 @@ public class loginServlet extends HttpServlet {
             for(int i = 0;i<friendlist.size();i++){
                 messagelist.addAll(UnswBookMessageDAO.getMessageByUserId(friendlist.get(i)));
             }
-            request.setAttribute("messageList",messagelist);
+            request.getSession().setAttribute("messageList",messagelist);
             request.getSession().setAttribute("currentUserId",uid);
             request.getRequestDispatcher("mainpage.jsp").forward(request,response);
         }else{
