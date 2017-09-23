@@ -11,7 +11,7 @@
  Target Server Version : 50719
  File Encoding         : utf-8
 
- Date: 09/22/2017 21:14:58 PM
+ Date: 09/23/2017 17:23:56 PM
 */
 
 SET NAMES utf8mb4;
@@ -27,7 +27,14 @@ CREATE TABLE `UNSWBookActivity` (
   `time` datetime NOT NULL,
   `userId` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+--  Records of `UNSWBookActivity`
+-- ----------------------------
+BEGIN;
+INSERT INTO `UNSWBookActivity` VALUES ('1', 'regist', '2017-09-23 12:15:23', '4'), ('2', 'post message: 123', '2017-09-23 15:13:18', '1'), ('3', 'post message: 123', '2017-09-23 15:13:31', '1'), ('4', 'post message: ad', '2017-09-23 15:18:25', '1'), ('5', 'post message: sd', '2017-09-23 15:18:30', '1'), ('6', 'post message: adaf', '2017-09-23 15:22:00', '2'), ('7', 'post message: as', '2017-09-23 15:22:11', '2'), ('8', 'post message: yeeees', '2017-09-23 15:28:24', '1');
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `UNSWBookAdmin`
@@ -49,32 +56,13 @@ CREATE TABLE `UNSWBookFriendship` (
   `Fid` int(11) NOT NULL,
   `Uid` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 --  Records of `UNSWBookFriendship`
 -- ----------------------------
 BEGIN;
-INSERT INTO `UNSWBookFriendship` VALUES ('2', '0', '1'), ('1', '1', '0');
-COMMIT;
-
--- ----------------------------
---  Table structure for `UNSWBookLike`
--- ----------------------------
-DROP TABLE IF EXISTS `UNSWBookLike`;
-CREATE TABLE `UNSWBookLike` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `userId` int(11) NOT NULL,
-  `messageId` int(11) NOT NULL,
-  `like` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
--- ----------------------------
---  Records of `UNSWBookLike`
--- ----------------------------
-BEGIN;
-INSERT INTO `UNSWBookLike` VALUES ('1', '2', '1', '1');
+INSERT INTO `UNSWBookFriendship` VALUES ('2', '0', '1'), ('6', '2', '1'), ('7', '1', '2'), ('1', '1', '0');
 COMMIT;
 
 -- ----------------------------
@@ -88,17 +76,17 @@ CREATE TABLE `UNSWBookMessage` (
   `content` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `time` datetime NOT NULL,
-  `like` int(11) NOT NULL DEFAULT '0',
-  `unlike` int(11) NOT NULL DEFAULT '0',
+  `thumbUp` int(11) NOT NULL DEFAULT '0',
+  `thumbDown` int(11) NOT NULL DEFAULT '0',
   `url` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `UNSWBookMessage`
 -- ----------------------------
 BEGIN;
-INSERT INTO `UNSWBookMessage` VALUES ('1', '0', 'abab', null, null, '2017-09-22 15:43:04', '1', '0', 'tba');
+INSERT INTO `UNSWBookMessage` VALUES ('1', '0', 'abab', null, null, '2017-09-22 15:43:04', '1', '0', 'tba'), ('3', '1', '123', '321', null, '2017-09-23 15:13:18', '0', '0', '131'), ('4', '1', '123', '321', null, '2017-09-23 15:13:31', '0', '0', '131'), ('5', '1', 'ad', 'df', null, '2017-09-23 15:18:25', '0', '0', 'pdf'), ('6', '1', 'sd', 'ds', null, '2017-09-23 15:18:30', '0', '0', 'sds'), ('7', '2', 'adaf', 'adad', null, '2017-09-23 15:22:00', '0', '0', 'asad'), ('8', '2', 'as', 'as', null, '2017-09-23 15:22:11', '0', '0', 'asad'), ('9', '1', 'yeeees', 'yeees', null, '2017-09-23 15:28:24', '0', '0', 'yes');
 COMMIT;
 
 -- ----------------------------
@@ -115,13 +103,32 @@ CREATE TABLE `UNSWBookUser` (
   `photo` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `username` varchar(255) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 --  Records of `UNSWBookUser`
 -- ----------------------------
 BEGIN;
-INSERT INTO `UNSWBookUser` VALUES ('1', '2017-09-22', '123@163.com', 'male', '123', 'bbb', null, 'aaa'), ('2', '1990-02-01', 'aka@gmail.com', 'male', 'aka', 'aka', null, 'aka'), ('3', '1990-02-01', 'abc@gmail.com', 'male', 'abc', 'abc', null, 'abs');
+INSERT INTO `UNSWBookUser` VALUES ('1', '2017-09-22', '123@163.com', 'male', '123', 'bbb', null, 'aaa'), ('2', '1990-02-01', 'aka@gmail.com', 'male', 'aka', 'aka', null, 'aka'), ('3', '1990-02-01', 'abc@gmail.com', 'male', 'abc', 'abc', null, 'abs'), ('4', '1990-02-01', 'iiikkk@gmail.com', 'male', 'iiikkk', 'iiikkk', null, 'iiikkk');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `UNSWBookVote`
+-- ----------------------------
+DROP TABLE IF EXISTS `UNSWBookVote`;
+CREATE TABLE `UNSWBookVote` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) NOT NULL,
+  `messageId` int(11) NOT NULL,
+  `thumbUp` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Records of `UNSWBookVote`
+-- ----------------------------
+BEGIN;
+INSERT INTO `UNSWBookVote` VALUES ('1', '2', '1', '1');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
