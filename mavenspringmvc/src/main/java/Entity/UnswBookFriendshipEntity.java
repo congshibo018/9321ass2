@@ -8,6 +8,7 @@ public class UnswBookFriendshipEntity {
     private int id;
     private int fid;
     private int uid;
+    private String status;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -39,6 +40,16 @@ public class UnswBookFriendshipEntity {
         this.uid = uid;
     }
 
+    @Basic
+    @Column(name = "status", nullable = false, length = 255)
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -49,6 +60,7 @@ public class UnswBookFriendshipEntity {
         if (id != that.id) return false;
         if (fid != that.fid) return false;
         if (uid != that.uid) return false;
+        if (status != null ? !status.equals(that.status) : that.status != null) return false;
 
         return true;
     }
@@ -58,6 +70,7 @@ public class UnswBookFriendshipEntity {
         int result = id;
         result = 31 * result + fid;
         result = 31 * result + uid;
+        result = 31 * result + (status != null ? status.hashCode() : 0);
         return result;
     }
 }

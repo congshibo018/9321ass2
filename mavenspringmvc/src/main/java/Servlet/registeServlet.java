@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -47,10 +48,13 @@ public class registeServlet extends HttpServlet {
         user.setGender(gender);
         user.setDoB(date);
         user.setEmailAddress(emailAddress);
-        System.out.println("new username"+UnswBookUserDAO.validity(username));
         if(UnswBookUserDAO.getUserId(username)== -1){
+            try {
+                user = tools.emailTool.activateMail(user);
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
             UnswBookUserDAO.saveOrUpdate(user);
-
             UnswBookActivityEntity activity = new UnswBookActivityEntity();
             activity.setActivity("regist");
             Timestamp current_time = new Timestamp(System.currentTimeMillis());

@@ -14,7 +14,7 @@
 <body>
 <c:forEach var="result" items="${userlist}">
     <tr>
-        <td>${result.name}
+        <td><a href="showUserDetail?uid=${result.id}">${result.name}</a>
         </td><br>
     </tr>
 </c:forEach>

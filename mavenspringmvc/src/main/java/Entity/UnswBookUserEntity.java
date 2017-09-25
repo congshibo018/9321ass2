@@ -2,6 +2,7 @@ package Entity;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "UNSWBookUser", schema = "UNSWBook")
@@ -14,6 +15,9 @@ public class UnswBookUserEntity {
     private String password;
     private String photo;
     private String username;
+    private String status;
+    private String code;
+    private Timestamp activateTime;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -95,6 +99,36 @@ public class UnswBookUserEntity {
         this.username = username;
     }
 
+    @Basic
+    @Column(name = "status", nullable = false, length = 255)
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @Basic
+    @Column(name = "code", nullable = false, length = 255)
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    @Basic
+    @Column(name = "activateTime", nullable = true)
+    public Timestamp getActivateTime() {
+        return activateTime;
+    }
+
+    public void setActivateTime(Timestamp activateTime) {
+        this.activateTime = activateTime;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -110,6 +144,9 @@ public class UnswBookUserEntity {
         if (password != null ? !password.equals(that.password) : that.password != null) return false;
         if (photo != null ? !photo.equals(that.photo) : that.photo != null) return false;
         if (username != null ? !username.equals(that.username) : that.username != null) return false;
+        if (status != null ? !status.equals(that.status) : that.status != null) return false;
+        if (code != null ? !code.equals(that.code) : that.code != null) return false;
+        if (activateTime != null ? !activateTime.equals(that.activateTime) : that.activateTime != null) return false;
 
         return true;
     }
@@ -124,6 +161,9 @@ public class UnswBookUserEntity {
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (photo != null ? photo.hashCode() : 0);
         result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (status != null ? status.hashCode() : 0);
+        result = 31 * result + (code != null ? code.hashCode() : 0);
+        result = 31 * result + (activateTime != null ? activateTime.hashCode() : 0);
         return result;
     }
 }

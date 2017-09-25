@@ -20,7 +20,7 @@ public class UnswBookFriendshipDAO {
 
     }
 
-    public static UnswBookFriendshipEntity retrieve(String id){
+    public static UnswBookFriendshipEntity retrieve(int id){
         Session session = HibernateUtil.SESSION_FACTORY.openSession();
         session.beginTransaction();
 
@@ -34,7 +34,7 @@ public class UnswBookFriendshipDAO {
         Session session = HibernateUtil.SESSION_FACTORY.openSession();
         session.beginTransaction();
 
-        String hql = "SELECT fid FROM UnswBookFriendshipEntity WHERE uid=:uid";
+        String hql = "SELECT fid FROM UnswBookFriendshipEntity WHERE status='1' and uid=:uid";
         Query q = session.createQuery(hql);
         q.setParameter("uid",uid);
         if (q==null){
@@ -46,7 +46,51 @@ public class UnswBookFriendshipDAO {
         return list;
     }
 
-    public void delete(UnswBookFriendshipEntity friendship){
+    public static boolean checkFriendship(int uid,int fid){
+        Session session = HibernateUtil.SESSION_FACTORY.openSession();
+        session.beginTransaction();
+
+        String hql = "FROM UnswBookFriendshipEntity WHERE status='1' and uid=:uid and fid=:fid";
+        Query q = session.createQuery(hql);
+        q.setParameter("uid",uid);
+        q.setParameter("fid",fid);
+        if (q==null){
+            return false;
+        }
+        if (q.list().size()==0){
+            return false;
+        }
+        session.close();
+        return true;
+    }
+
+    public static int getFriendshipByTwoId(int uid,int fid){
+        Session session = HibernateUtil.SESSION_FACTORY.openSession();
+        session.beginTransaction();
+
+        UnswBookFriendshipEntity fs = null;
+        String hql = "FROM UnswBookFriendshipEntity WHERE uid=:uid and fid=:fid";
+        Query q = session.createQuery(hql);
+        q.setParameter("uid",uid);
+        q.setParameter("fid",fid);
+        int fsid = -1;
+        if (q==null){
+            return -1;
+        }
+        if (q.list().size()==0){
+            return -1;
+        }
+        List list = q.list();
+        Iterator iter = list.listIterator();
+        if (iter.hasNext()){
+            fs = (UnswBookFriendshipEntity) iter.next();
+            fsid = fs.getId();
+        }
+        session.close();
+        return fsid;
+    }
+
+    public static void delete(UnswBookFriendshipEntity friendship){
         Session session = HibernateUtil.SESSION_FACTORY.openSession();
         session.beginTransaction();
 

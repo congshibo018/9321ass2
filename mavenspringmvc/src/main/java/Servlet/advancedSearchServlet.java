@@ -27,15 +27,17 @@ public class advancedSearchServlet extends HttpServlet {
         String doB = request.getParameter("doB");
         String email = request.getParameter("emailAddress");
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date dob = null;
-        try {
-            dob = sdf.parse(doB);
-        } catch (ParseException e) {
-            e.printStackTrace();
+        java.sql.Date date =null;
+        if (!(doB ==null||doB.equals(""))) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date dob = null;
+            try {
+                dob = sdf.parse(doB);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            date = new java.sql.Date(dob.getTime());
         }
-        java.sql.Date date = new java.sql.Date(dob.getTime());
-
         ArrayList userlist = new ArrayList<UnswBookUserEntity>();
         userlist.addAll(UnswBookUserDAO.getUserByFactor(nickname,gender,date,email));
         request.setAttribute("userlist",userlist);

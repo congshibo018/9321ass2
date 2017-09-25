@@ -13,7 +13,7 @@
 <body>
 <form action="advancedSearch" method="post">
     nickname:<input type = "text" name="nickname"><br>
-    gender:<input type = "radio" name = "gender" value = "male" checked>
+    gender:<input type = "radio" name = "gender" value = "male">
     <input type = "radio" name = "gender" value = "female"><br>
     dob:<input type = "date" name = "doB" value="1990-2-1"><br>
     email:<input type = "email" name = "emailAddress"><br>

@@ -36,4 +36,40 @@
         <servlet-name>postMessageServlet</servlet-name>
         <url-pattern>/postMessage</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>showUserDetailServlet</servlet-name>
+        <servlet-class>Servlet.showUserDetailServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>showUserDetailServlet</servlet-name>
+        <url-pattern>/showUserDetail</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>addFriendServlet</servlet-name>
+        <servlet-class>Servlet.addFriendServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addFriendServlet</servlet-name>
+        <url-pattern>/addFriend</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>activateServlet</servlet-name>
+        <servlet-class>Servlet.activateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>activateServlet</servlet-name>
+        <url-pattern>/activatemail</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>activateFriendServlet</servlet-name>
+        <servlet-class>Servlet.activateFriendServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>activateFriendServlet</servlet-name>
+        <url-pattern>/activateFriend</url-pattern>
+    </servlet-mapping>
 </web-app>

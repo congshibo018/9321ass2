@@ -20,7 +20,7 @@ public class UnswBookVoteDAO {
 
     }
 
-    public static UnswBookVoteEntity retrieve(String id){
+    public static UnswBookVoteEntity retrieve(int id){
         Session session = HibernateUtil.SESSION_FACTORY.openSession();
         session.beginTransaction();
 
@@ -52,7 +52,7 @@ public class UnswBookVoteDAO {
         return like;
     }
 
-    public void delete(UnswBookVoteEntity vote){
+    public static void delete(UnswBookVoteEntity vote){
         Session session = HibernateUtil.SESSION_FACTORY.openSession();
         session.beginTransaction();
 

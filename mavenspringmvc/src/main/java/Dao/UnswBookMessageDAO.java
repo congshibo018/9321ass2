@@ -19,7 +19,7 @@ public class UnswBookMessageDAO {
 
     }
 
-    public static UnswBookMessageEntity retrieve(String id){
+    public static UnswBookMessageEntity retrieve(int id){
         Session session = HibernateUtil.SESSION_FACTORY.openSession();
         session.beginTransaction();
 
@@ -43,7 +43,7 @@ public class UnswBookMessageDAO {
         return list;
 
     }
-    public void delete(UnswBookMessageEntity message){
+    public static void delete(UnswBookMessageEntity message){
         Session session = HibernateUtil.SESSION_FACTORY.openSession();
         session.beginTransaction();
 

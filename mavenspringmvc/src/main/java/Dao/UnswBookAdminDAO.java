@@ -20,7 +20,7 @@ public class UnswBookAdminDAO {
 
     }
 
-    public static UnswBookAdminEntity retrieve(String id){
+    public static UnswBookAdminEntity retrieve(int id){
         Session session = HibernateUtil.SESSION_FACTORY.openSession();
         session.beginTransaction();
 
@@ -52,7 +52,7 @@ public class UnswBookAdminDAO {
         return password;
     }
 
-    public void delete(UnswBookAdminEntity admin){
+    public static void delete(UnswBookAdminEntity admin){
         Session session = HibernateUtil.SESSION_FACTORY.openSession();
         session.beginTransaction();
 

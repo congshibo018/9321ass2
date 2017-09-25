@@ -22,7 +22,7 @@ public class UnswBookActivityDAO {
         session.close();
         return user;
     }
-    public void delete(UnswBookActivityEntity activity){
+    public static void delete(UnswBookActivityEntity activity){
         Session session = HibernateUtil.SESSION_FACTORY.openSession();
         session.beginTransaction();
 
