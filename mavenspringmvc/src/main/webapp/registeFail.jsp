@@ -11,7 +11,7 @@
     <title>fail</title>
 </head>
 <body>
-registeFail,username exists
+registeFail,${failReason} exists
 <a href="registe.jsp">registe</a>
 </body>
 </html>

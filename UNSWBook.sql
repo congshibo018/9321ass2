@@ -11,7 +11,7 @@
  Target Server Version : 50719
  File Encoding         : utf-8
 
- Date: 09/25/2017 17:04:55 PM
+ Date: 09/25/2017 17:44:54 PM
 */
 
 SET NAMES utf8mb4;
@@ -27,13 +27,13 @@ CREATE TABLE `UNSWBookActivity` (
   `time` datetime NOT NULL,
   `userId` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 --  Records of `UNSWBookActivity`
 -- ----------------------------
 BEGIN;
-INSERT INTO `UNSWBookActivity` VALUES ('1', 'regist', '2017-09-23 12:15:23', '4'), ('2', 'post message: 123', '2017-09-23 15:13:18', '1'), ('3', 'post message: 123', '2017-09-23 15:13:31', '1'), ('4', 'post message: ad', '2017-09-23 15:18:25', '1'), ('5', 'post message: sd', '2017-09-23 15:18:30', '1'), ('6', 'post message: adaf', '2017-09-23 15:22:00', '2'), ('7', 'post message: as', '2017-09-23 15:22:11', '2'), ('8', 'post message: yeeees', '2017-09-23 15:28:24', '1'), ('19', '1 send friend request to 14', '2017-09-25 16:42:38', '1'), ('20', '1 send friend request to 14', '2017-09-25 16:46:12', '1'), ('21', '1 send friend request to 14', '2017-09-25 16:48:23', '1'), ('22', '1 send friend request to 14', '2017-09-25 16:54:23', '1'), ('23', '1 send friend request to 14', '2017-09-25 16:55:57', '1');
+INSERT INTO `UNSWBookActivity` VALUES ('1', 'regist', '2017-09-23 12:15:23', '4'), ('2', 'post message: 123', '2017-09-23 15:13:18', '1'), ('3', 'post message: 123', '2017-09-23 15:13:31', '1'), ('4', 'post message: ad', '2017-09-23 15:18:25', '1'), ('5', 'post message: sd', '2017-09-23 15:18:30', '1'), ('6', 'post message: adaf', '2017-09-23 15:22:00', '2'), ('7', 'post message: as', '2017-09-23 15:22:11', '2'), ('8', 'post message: yeeees', '2017-09-23 15:28:24', '1'), ('27', 'regist', '2017-09-25 17:28:49', '18'), ('28', 'regist', '2017-09-25 17:38:44', '19'), ('29', 'regist', '2017-09-25 17:41:18', '20'), ('30', 'regist', '2017-09-25 17:43:47', '21'), ('31', 'post message: ', '2017-09-25 17:44:10', '21');
 COMMIT;
 
 -- ----------------------------
@@ -81,13 +81,13 @@ CREATE TABLE `UNSWBookMessage` (
   `thumbDown` int(11) NOT NULL DEFAULT '0',
   `url` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `UNSWBookMessage`
 -- ----------------------------
 BEGIN;
-INSERT INTO `UNSWBookMessage` VALUES ('1', '0', 'abab', null, null, '2017-09-22 15:43:04', '1', '0', 'tba'), ('3', '1', '123', '321', null, '2017-09-23 15:13:18', '0', '0', '131'), ('4', '1', '123', '321', null, '2017-09-23 15:13:31', '0', '0', '131'), ('5', '1', 'ad', 'df', null, '2017-09-23 15:18:25', '0', '0', 'pdf'), ('6', '1', 'sd', 'ds', null, '2017-09-23 15:18:30', '0', '0', 'sds'), ('7', '2', 'adaf', 'adad', null, '2017-09-23 15:22:00', '0', '0', 'asad'), ('8', '2', 'as', 'as', null, '2017-09-23 15:22:11', '0', '0', 'asad'), ('9', '1', 'yeeees', 'yeees', null, '2017-09-23 15:28:24', '0', '0', 'yes');
+INSERT INTO `UNSWBookMessage` VALUES ('1', '0', 'abab', null, null, '2017-09-22 15:43:04', '1', '0', 'tba'), ('3', '1', '123', '321', null, '2017-09-23 15:13:18', '0', '0', '131'), ('4', '1', '123', '321', null, '2017-09-23 15:13:31', '0', '0', '131'), ('5', '1', 'ad', 'df', null, '2017-09-23 15:18:25', '0', '0', 'pdf'), ('6', '1', 'sd', 'ds', null, '2017-09-23 15:18:30', '0', '0', 'sds'), ('7', '2', 'adaf', 'adad', null, '2017-09-23 15:22:00', '0', '0', 'asad'), ('8', '2', 'as', 'as', null, '2017-09-23 15:22:11', '0', '0', 'asad'), ('9', '1', 'yeeees', 'yeees', null, '2017-09-23 15:28:24', '0', '0', 'yes'), ('10', '21', '', '', null, '2017-09-25 17:44:10', '0', '0', '');
 COMMIT;
 
 -- ----------------------------
@@ -107,13 +107,13 @@ CREATE TABLE `UNSWBookUser` (
   `code` varchar(255) COLLATE utf8_bin NOT NULL,
   `activateTime` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 --  Records of `UNSWBookUser`
 -- ----------------------------
 BEGIN;
-INSERT INTO `UNSWBookUser` VALUES ('1', '2017-09-22', '123@163.com', 'male', '123', 'bbb', null, 'aaa', '1', '', '2017-09-25 13:38:40'), ('2', '1990-02-01', 'aka@gmail.com', 'male', 'aka', 'aka', null, 'aka', '1', '', '2017-09-25 13:38:40'), ('3', '1990-02-01', 'abc@gmail.com', 'male', 'abc', 'abc', null, 'abs', '1', '', '2017-09-25 13:38:40'), ('4', '1990-02-01', 'iiikkk@gmail.com', 'male', 'iiikkk', 'iiikkk', null, 'iiikkk', '0', '1', '2017-09-25 13:38:40'), ('14', '1990-02-01', 'congshibo018@gmail.com', 'male', 'ale', 'ale', null, 'ale', '1', 'fe6e2dc47d187f491fac5839310e848a', '2017-09-26 15:58:24');
+INSERT INTO `UNSWBookUser` VALUES ('1', '2017-09-22', '123@163.com', 'male', '123', 'bbb', null, 'aaa', '1', '', '2017-09-25 13:38:40'), ('2', '1990-02-01', 'aka@gmail.com', 'male', 'aka', 'aka', null, 'aka', '1', '', '2017-09-25 13:38:40'), ('3', '1990-02-01', 'abc@gmail.com', 'male', 'abc', 'abc', null, 'abs', '1', '', '2017-09-25 13:38:40'), ('4', '1990-02-01', 'iiikkk@gmail.com', 'male', 'iiikkk', 'iiikkk', null, 'iiikkk', '0', '1', '2017-09-25 13:38:40'), ('21', '1990-02-01', 'congshibo018@gmail.com', 'male', 'test', 'test', null, 'test', '1', '95889b5c0bd1fe710d73f383311a1166', '2017-09-26 17:43:31');
 COMMIT;
 
 -- ----------------------------

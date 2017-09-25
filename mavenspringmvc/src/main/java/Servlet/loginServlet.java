@@ -24,6 +24,8 @@ public class loginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        System.out.println(UnswBookUserDAO.validity(username));
+        System.out.println(password);
         if (UnswBookUserDAO.validity(username).equals(password)){
             int uid = UnswBookUserDAO.getUserId(username);
             List<Integer> friendlist = UnswBookFriendshipDAO.getFriendByUserId(uid);

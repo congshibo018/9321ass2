@@ -26,7 +26,6 @@ public class activateServlet extends HttpServlet {
         UnswBookUserEntity u = UnswBookUserDAO.retrieve(uid);
 
         if (u != null) {
-
             if (u.getStatus().equals("0") && u.getActivateTime().getTime() > time) {
                 System.out.println(token);
                 System.out.println(u.getCode());
@@ -39,6 +38,7 @@ public class activateServlet extends HttpServlet {
                         e.printStackTrace();
                     }
                     UnswBookUserDAO.saveOrUpdate(u);
+                    request.getRequestDispatcher("login?username="+u.getUsername()+"&password="+u.getPassword()).forward(request,response);
                 } else {
                     System.out.println("token");
                 }

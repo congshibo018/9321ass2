@@ -48,7 +48,7 @@ public class registeServlet extends HttpServlet {
         user.setGender(gender);
         user.setDoB(date);
         user.setEmailAddress(emailAddress);
-        if(UnswBookUserDAO.getUserId(username)== -1){
+        if(UnswBookUserDAO.getUserId(username)== -1||UnswBookUserDAO.getUserIdByEmailAddress(emailAddress)==-1){
             try {
                 user = tools.emailTool.activateMail(user);
             } catch (NoSuchAlgorithmException e) {
@@ -62,8 +62,14 @@ public class registeServlet extends HttpServlet {
             activity.setUserId(UnswBookUserDAO.getUserId(username));
             UnswBookActivityDAO.saveOrUpdate(activity);
 
-            request.getRequestDispatcher("login.jsp").forward(request,response);
+            response.getWriter().append("activate email send, confirm to login");
         }else{
+            if(UnswBookUserDAO.getUserId(username)==-1){
+            request.getSession().setAttribute("failReason","username");
+            }else{
+                request.getSession().setAttribute("failReason","email");
+
+            }
             request.getRequestDispatcher("registeFail.jsp").forward(request,response);
         }
     }
