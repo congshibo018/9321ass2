@@ -36,7 +36,7 @@
         </ul>
       </div>
 
-      <div class="col-sm-9">
+      <div class="col-sm-10">
         <form action="postMessage" method="POST" class="center-flex" enctype="multipart/form-data">
         <fieldset>
           <legend>Speak your mind here:</legend>
