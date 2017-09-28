@@ -13,6 +13,14 @@
   padding-right: 2em;
 }
 
+a.green {
+  color: green;
+}
+
+a.red {
+  color: red;
+}
+
 textarea {
   resize: none;
 }
