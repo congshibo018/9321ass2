@@ -16,6 +16,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="likes.js"></script>
   <link href="style.css" type="text/css" rel="stylesheet">
 </head>
 
@@ -59,7 +60,7 @@
         </fieldset>
       </form>
       <h1>Your Feed: </h1>
-      <c:forEach items="${messageList}" var="messagelist">
+      <c:forEach items="${messageList}" var="messagelist" varStatus="loop">
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="media">
@@ -68,7 +69,7 @@
               </div>
               <div class="media-body">
                 <div>
-                  <small class="left-text">${messagelist.thumbUp} Likes, ${messagelist.thumbDown} Dislikes</small>
+                  <small id="cnt_${loop.index}" class="right-text">${messagelist.thumbUp} Likes, ${messagelist.thumbDown} Dislikes</small>
                   <h4 class="media-heading">${messagelist.title} <small>Posted at ${messagelist.time}</small></h4>
                 </div>
                 <p>${messagelist.content}</p>
@@ -76,11 +77,11 @@
             </div>
           </div>
 
-          <div class="panel-footer">
-            <a href="#">
+          <div id="msg_${loop.index}" data-active-state="None" class="panel-footer">
+            <a class="thumbIcon" href="#">
               <span class="glyphicon glyphicon-thumbs-up">Like</span>
             </a>
-            <a href="#">
+            <a class="thumbIcon" href="#">
               <span class="glyphicon glyphicon-thumbs-down">Dislike</span>
             </a>
           </div>          
