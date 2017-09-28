@@ -52,6 +52,25 @@ public class UnswBookAdminDAO {
         return password;
     }
 
+    public static int getUserId(String username){
+        Session session = HibernateUtil.SESSION_FACTORY.openSession();
+        session.beginTransaction();
+        String hql = "FROM UnswBookAdminEntity WHERE username=:username";
+        Query q = session.createQuery(hql);
+        q.setParameter("username",username);
+
+        List list = q.list();
+        UnswBookAdminEntity user = null;
+        Iterator iter = list.listIterator();
+        int uid=-1;
+        if (iter.hasNext()){
+            user = (UnswBookAdminEntity) iter.next();
+            uid = user.getId();
+        }
+        session.close();
+        return uid;
+    }
+
     public static void delete(UnswBookAdminEntity admin){
         Session session = HibernateUtil.SESSION_FACTORY.openSession();
         session.beginTransaction();

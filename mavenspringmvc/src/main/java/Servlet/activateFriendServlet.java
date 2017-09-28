@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+import tools.webSocket;
 @WebServlet(name = "activateFriendServlet")
 public class activateFriendServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,6 +30,7 @@ public class activateFriendServlet extends HttpServlet {
             fs2.setStatus("1");
             UnswBookFriendshipDAO.saveOrUpdate(fs1);
             UnswBookFriendshipDAO.saveOrUpdate(fs2);
+
         }else{
             UnswBookFriendshipDAO.delete(fs1);
             UnswBookFriendshipDAO.delete(fs2);

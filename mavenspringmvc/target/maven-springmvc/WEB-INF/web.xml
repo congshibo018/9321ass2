@@ -72,4 +72,13 @@
         <servlet-name>activateFriendServlet</servlet-name>
         <url-pattern>/activateFriend</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>changeUserStatusServlet</servlet-name>
+        <servlet-class>Servlet.changeUserStatusServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>changeUserStatusServlet</servlet-name>
+        <url-pattern>/changeUserStatus</url-pattern>
+    </servlet-mapping>
 </web-app>

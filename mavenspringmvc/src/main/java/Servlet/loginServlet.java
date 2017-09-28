@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Dao.UnswBookAdminDAO;
 import Dao.UnswBookFriendshipDAO;
 import Dao.UnswBookMessageDAO;
 import Dao.UnswBookUserDAO;
@@ -22,23 +23,37 @@ public class loginServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String role = request.getParameter("role");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        System.out.println(UnswBookUserDAO.validity(username));
-        System.out.println(password);
-        if (UnswBookUserDAO.validity(username).equals(password)){
-            int uid = UnswBookUserDAO.getUserId(username);
-            List<Integer> friendlist = UnswBookFriendshipDAO.getFriendByUserId(uid);
-            ArrayList messagelist = new ArrayList<UnswBookMessageEntity>();
 
-            for(int i = 0;i<friendlist.size();i++){
-                messagelist.addAll(UnswBookMessageDAO.getMessageByUserId(friendlist.get(i)));
+        if (role.equals("user")) {
+            if (UnswBookUserDAO.validity(username).equals(password)) {
+                int uid = UnswBookUserDAO.getUserId(username);
+                List<Integer> friendlist = UnswBookFriendshipDAO.getFriendByUserId(uid);
+                ArrayList messagelist = new ArrayList<UnswBookMessageEntity>();
+
+                for (int i = 0; i < friendlist.size(); i++) {
+                    messagelist.addAll(UnswBookMessageDAO.getMessageByUserId(friendlist.get(i)));
+                }
+                request.getSession().setAttribute("messageList", messagelist);
+                request.getSession().setAttribute("currentUserId", uid);
+                request.getSession().setAttribute("role",role);
+                request.getRequestDispatcher("mainpage.jsp").forward(request, response);
+            } else {
+                response.getWriter().append("login failed");
             }
-            request.getSession().setAttribute("messageList",messagelist);
-            request.getSession().setAttribute("currentUserId",uid);
-            request.getRequestDispatcher("mainpage.jsp").forward(request,response);
-        }else{
-            response.getWriter().append("login failed");
+        }
+
+        if(role.equals("admin")){
+            if(UnswBookAdminDAO.validity(username).equals(password)){
+                int uid = UnswBookAdminDAO.getUserId(username);
+                request.getSession().setAttribute("currentUserId",uid);
+                request.getSession().setAttribute("role",role);
+                request.getRequestDispatcher("mainpage.jsp").forward(request, response);
+            }else {
+                response.getWriter().append("login failed");
+            }
         }
     }
 }

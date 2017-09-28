@@ -32,11 +32,13 @@
         <td>${messagelist.thumbDown}</td>
     </tr>
 </c:forEach>
+<c:if test="${role=='user'}">
 <form action="postMessage" method="post">
     title:<input type = "text" name="title"><br>
     content:<input type = "text" name ="content"><br>
     url:<input type = "text" name ="url"><br>
 
     <input type="submit" value = "post"></form>
+</c:if>
 </body>
 </html>
