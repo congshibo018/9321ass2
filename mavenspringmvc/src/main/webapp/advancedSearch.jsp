@@ -22,7 +22,7 @@
 
 <nav class="navbar navbar-default">
   <div class="container">
-    <a style="font-size: 25px;"class="navbar-brand" href="#">UNSWBook</a>
+    <a style="font-size: 25px;"class="navbar-brand" href="mainpage.jsp">UNSWBook</a>
   </div>
 </nav>
 
@@ -32,7 +32,7 @@
       <h1 class="col-sm-offset-1">Advanced Search</h1>
     </div>
     <div class="panel-body">
-      <form class="form-horizontal" action="/registe" method="POST">
+      <form class="form-horizontal" action="advancedSearch" method="POST">
         <div class="form-group">
           <label class="control-label col-sm-2" for="name">Nickname:</label>
           <div class="col-sm-5">

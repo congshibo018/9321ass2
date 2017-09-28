@@ -38,12 +38,14 @@ public class activateServlet extends HttpServlet {
                         e.printStackTrace();
                     }
                     UnswBookUserDAO.saveOrUpdate(u);
-                    request.getRequestDispatcher("login?username="+u.getUsername()+"&password="+u.getPassword()).forward(request,response);
+                    request.getRequestDispatcher("login?role=user&username="+u.getUsername()+"&password="+u.getPassword()).forward(request,response);
                 } else {
-                    System.out.println("token");
+                    request.getSession().setAttribute("failReason","token");
+                    request.getRequestDispatcher("registFail.jsp").forward(request,response);
                 }
             } else {
-                System.out.println("already activated");
+                request.getSession().setAttribute("failReason","already activated");
+                request.getRequestDispatcher("registFail.jsp").forward(request,response);
             }
         }
     }

@@ -1,0 +1,42 @@
+.center-text {
+  text-align: center;
+}
+
+.left-text {
+  text-align: right;
+  float: right;
+}
+
+.glyphicon {
+  font-size: 1.0em;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+textarea {
+  resize: none;
+}
+
+.panel-footer {
+  text-align: center;
+}
+
+/*
+  Flexbox. Everything contained within will be centred
+  See https://www.w3schools.com/css/css3_flexbox.asp
+*/
+.center-flex {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column
+  -webkit-justify-content: center;
+  -webkit-align-items: stretch;
+  align-items: stretch;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+a.list-group-item:hover {
+    background-color: #47D7FF;
+}

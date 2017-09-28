@@ -33,17 +33,18 @@
       <h1 class="col-sm-offset-1">Login</h1>
     </div>
     <div class="panel-body">
-      <form class="form-horizontal" action="/login" method="POST">
+      <form class="form-horizontal" action="login" method="POST">
         <div class="form-group">
           <label class="control-label col-sm-2" for="username">Username:</label>
           <div class="col-sm-5">
             <input type="text" class="form-control" id="username" placeholder="Enter username" name="username">
           </div>
         </div>
+        <input type="hidden" name="role" value="user">
         <div class="form-group">
           <label class="control-label col-sm-2" for="pwd">Password:</label>
           <div class="col-sm-5">
-            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
           </div>
         </div>
         <div class="form-group">

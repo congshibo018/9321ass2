@@ -22,7 +22,7 @@
 <body>
   <nav class="navbar navbar-default">
     <div class="container">
-      <a style="font-size: 25px;" class="navbar-brand" href="#">UNSWBook</a>
+      <a style="font-size: 25px;" class="navbar-brand" href="mainpage.jsp">UNSWBook</a>
     </div>
   </nav>
 
@@ -35,13 +35,16 @@
       </div>
 
       <div class="col-sm-9">
-        <h1>Messages found: </h1>
-        <div class="list-group">
-          <a href="showUserDetail?uid=${result.id}" class="list-group-item">
-            <h5 class="list-group-item-heading">Message from ${result.name}</h5>
-            <p class="list-group-item-text">User ID: ${result.id}</p>
-          </a>
-        </div>
+        <h1>Users found: </h1>
+        <c:forEach items="${userlist}" var="userList">
+          <div class="list-group">
+            <a href="showUserDetail?uid=${userList.id}" class="list-group-item">
+              <h5 class="list-group-item-heading">Username: ${userList.name}</h5>
+              <p class="list-group-item-text">User ID: ${userList.id}</p>
+            </a>
+          </div>
+        </c:forEach>
+
 
       </div>
     </div>
