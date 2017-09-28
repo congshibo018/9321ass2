@@ -30,7 +30,7 @@
     <div class="row">
       <div class="col-sm-2">
         <ul class="nav nav-pills">
-          <li><a href="advancedsearch.jsp">Advanced Search</a></li>
+          <li><a href="advancedSearch.jsp">Advanced Search</a></li>
         </ul>
       </div>
 

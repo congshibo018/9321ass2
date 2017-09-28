@@ -18,12 +18,7 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href="style.css" type="text/css" rel="stylesheet">
 </head>
-<script>
-    function vote(mid,like) {
-        var uid = ${currentUserId};
-        //not finished yet
-    }
-</script>
+
 
 <body>
   <nav class="navbar navbar-default">
@@ -41,7 +36,7 @@
       </div>
 
       <div class="col-sm-9">
-        <form action="postMessage" method="POST" class="center-flex">
+        <form action="postMessage" method="POST" class="center-flex" enctype="multipart/form-data">
         <fieldset>
           <legend>Speak your mind here:</legend>
           <div class="form-group center-flex">
@@ -56,6 +51,10 @@
             <label for="url">URL:</label>
             <input type="text" name="url" class="form-control" id="url">
           </div>
+            <div class="form-group center-flex">
+                <label for="url">Image:</label>
+                <input type="file" name="image" class="form-control" id="image">
+            </div>
           <button type="submit" class="btn btn-default">Post</button>
         </fieldset>
       </form>

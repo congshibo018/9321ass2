@@ -50,7 +50,7 @@ public class loginServlet extends HttpServlet {
                 int uid = UnswBookAdminDAO.getUserId(username);
                 request.getSession().setAttribute("currentUserId",uid);
                 request.getSession().setAttribute("role",role);
-                request.getRequestDispatcher("mainpage.jsp").forward(request, response);
+                request.getRequestDispatcher("advancedSearch.jsp").forward(request, response);
             }else {
                 response.getWriter().append("login failed");
             }
