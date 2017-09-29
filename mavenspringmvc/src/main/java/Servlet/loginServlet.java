@@ -6,11 +6,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Dao.UnswBookAdminDAO;
-import Dao.UnswBookFriendshipDAO;
-import Dao.UnswBookMessageDAO;
-import Dao.UnswBookUserDAO;
+import Dao.*;
 import Entity.UnswBookMessageEntity;
+import Entity.UnswBookVoteEntity;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,10 +31,17 @@ public class loginServlet extends HttpServlet {
                 List<Integer> friendlist = UnswBookFriendshipDAO.getFriendByUserId(uid);
                 ArrayList messagelist = new ArrayList<UnswBookMessageEntity>();
 
+                ArrayList votelist = new ArrayList<UnswBookVoteEntity>();
                 for (int i = 0; i < friendlist.size(); i++) {
                     messagelist.addAll(UnswBookMessageDAO.getMessageByUserId(friendlist.get(i)));
                 }
+                for(int j =0;j < messagelist.size();j++){
+                    UnswBookMessageEntity m = (UnswBookMessageEntity) messagelist.get(j);
+                    int mid = m.getId();
+                    votelist.add(UnswBookVoteDAO.getVote(uid,mid));
+                }
                 request.getSession().setAttribute("messageList", messagelist);
+                request.getSession().setAttribute("voteList",votelist);
                 request.getSession().setAttribute("currentUserId", uid);
                 request.getSession().setAttribute("role",role);
                 request.getRequestDispatcher("mainpage.jsp").forward(request, response);

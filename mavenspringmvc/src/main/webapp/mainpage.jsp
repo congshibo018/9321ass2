@@ -21,13 +21,13 @@
 </head>
 
 
+
 <body>
   <nav class="navbar navbar-default">
     <div class="container">
       <a style="font-size: 25px;" class="navbar-brand" href="#">UNSWBook</a>
     </div>
   </nav>
-
   <div class="container">
     <div class="row">
       <div class="col-sm-2">
@@ -77,7 +77,7 @@
             </div>
           </div>
 
-          <div id="msg_${loop.index}" data-active-state="None" class="panel-footer">
+          <div id="msg_${loop.index}" data-active-state="${voteList[loop.index].thumbUp}" mid="${messagelist.id}" class="panel-footer">
             <a class="thumbIcon" href="#">
               <span class="glyphicon glyphicon-thumbs-up">Like</span>
             </a>

@@ -20,16 +20,16 @@
 </head>
 <script type="text/javascript">
 function showButton() {
-  var role = $ { role };
+  var role = "${role}";
   if (role === ("user")) {
-    var isFriend = $ { isFriend };
-    if (isFriend == true) {
+    var isFriend = "${isFriend}";
+    if (isFriend == "true") {
       document.getElementById("addFriendButton").style.display = "none";
     }
   }
   if (role === ("admin")) {
-    var isBanned = $ { isBanned };
-    if (isBanned == true) {
+    var isBanned = "${isBanned}";
+    if (isBanned == "true") {
       document.getElementById("banUserButton").style.display = "none";
     }
   }
@@ -41,7 +41,6 @@ function addFriend() {
 }
 
 function changeUserStatus() {
-  alert("a");
   location.href = "changeUserStatus?uid=${user.id}";
   alert("user status changed");
 }

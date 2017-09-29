@@ -31,7 +31,7 @@ public class UnswBookVoteDAO {
     }
 
 
-    public static int getVote(int uid,int mid){
+    public static UnswBookVoteEntity getVote(int uid,int mid){
         Session session = HibernateUtil.SESSION_FACTORY.openSession();
         session.beginTransaction();
 
@@ -43,13 +43,16 @@ public class UnswBookVoteDAO {
         List list = q.list();
         UnswBookVoteEntity vote = null;
         Iterator iter = list.listIterator();
-        int like=0;
         if (iter.hasNext()){
             vote = (UnswBookVoteEntity) iter.next();
-            like = vote.getThumbUp();
+        }else{
+            vote = new UnswBookVoteEntity();
+            vote.setUserId(uid);
+            vote.setMessageId(mid);
+            vote.setThumbUp(0);
         }
         session.close();
-        return like;
+        return vote;
     }
 
     public static void delete(UnswBookVoteEntity vote){
