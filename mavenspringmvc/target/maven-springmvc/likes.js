@@ -7,7 +7,7 @@ $(document).ready(function(){
 
         //  Take details from the div panel above it
         var parent = $(this).parent();
-        var messageId = parent.attr('mid');
+        var messageId = parent.attr('id');
         var state = parent.attr('data-active-state');
 
         var likes = 0;
@@ -17,7 +17,7 @@ $(document).ready(function(){
         //  Depends on if you have liked/disliked something
         //  Update state (Like/Dislike/None)
         //  As an added bonus, change colors of the thumb icons
-        if (state === "None") {
+        if (state === "0") {
             if (calltype === "Like") {
                 likes = 1;
                 $(this).toggleClass("green");
@@ -29,7 +29,7 @@ $(document).ready(function(){
             }
         }
 
-        else if (state === "Like") {
+        else if (state === "1") {
             if (calltype === "Like") {
                 likes = -1;
                 calltype = "None";
@@ -44,7 +44,7 @@ $(document).ready(function(){
             }
         }
 
-        else if (state === "Dislike") {
+        else if (state === "-1") {
             if (calltype === "Like") {
                 dislikes = -1;
                 likes = 1;

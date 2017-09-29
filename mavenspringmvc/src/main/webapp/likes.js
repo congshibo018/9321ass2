@@ -17,7 +17,7 @@ $(document).ready(function(){
         //  Depends on if you have liked/disliked something
         //  Update state (Like/Dislike/None)
         //  As an added bonus, change colors of the thumb icons
-        if (state === "None") {
+        if (state === "0") {
             if (calltype === "Like") {
                 likes = 1;
                 $(this).toggleClass("green");
@@ -29,7 +29,7 @@ $(document).ready(function(){
             }
         }
 
-        else if (state === "Like") {
+        else if (state === "1") {
             if (calltype === "Like") {
                 likes = -1;
                 calltype = "None";
@@ -44,7 +44,7 @@ $(document).ready(function(){
             }
         }
 
-        else if (state === "Dislike") {
+        else if (state === "-1") {
             if (calltype === "Like") {
                 dislikes = -1;
                 likes = 1;
