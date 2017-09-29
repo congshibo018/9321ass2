@@ -20,11 +20,12 @@ $(document).ready(function(){
         if (state === "0") {
             if (calltype === "Like") {
                 likes = 1;
+                calltype = "1";
                 $(this).toggleClass("green");
             }
             else if (calltype === "Dislike") {
                 dislikes = 1;
-                calltype = "Dislike";
+                calltype = "-1";
                 $(this).toggleClass("red");
             }
         }
@@ -32,13 +33,13 @@ $(document).ready(function(){
         else if (state === "1") {
             if (calltype === "Like") {
                 likes = -1;
-                calltype = "None";
+                calltype = "0";
                 $(this).toggleClass("green");
             }
             else if (calltype === "Dislike") {
                 likes = -1;
                 dislikes = 1;
-                calltype = "Dislike";
+                calltype = "-1";
                 $(this).siblings().toggleClass("green");
                 $(this).toggleClass("red");
             }
@@ -48,13 +49,13 @@ $(document).ready(function(){
             if (calltype === "Like") {
                 dislikes = -1;
                 likes = 1;
-                calltype = "Like";
+                calltype = "1";
                 $(this).siblings().removeClass("red");
                 $(this).addClass("green");
             }
             else if (calltype === "Dislike") {
                 dislikes = -1;
-                calltype = "None";
+                calltype = "0";
                 $(this).toggleClass("red");
             }
         }
