@@ -43,7 +43,7 @@ public class activateFriendServlet extends HttpServlet {
             UnswBookUserEntity friend = UnswBookUserDAO.retrieve(friendId);
             UnswBookNotificationEntity notification = new UnswBookNotificationEntity();
             notification.setUid(userId);
-            notification.setTitle("Friend request rejected");
+            notification.setTitle("Friend request accepted");
             notification.setText(friend.getName()+" accept your friend request :)  ");
             notification.setTime(current_time);
             UnswBookNotificationDAO.saveOrUpdate(notification);
