@@ -55,6 +55,7 @@
                             ${notificationlist.title}
                             ${notificationlist.text}
                             ${notificationlist.time}
+                            ${notificationlist.status}<%--unread/read --%>
                         </div>
                     </div>
 
