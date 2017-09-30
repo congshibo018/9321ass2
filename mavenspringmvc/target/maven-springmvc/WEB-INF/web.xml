@@ -99,4 +99,13 @@
         <servlet-name>changeUserDetailServlet</servlet-name>
         <url-pattern>/changeUserDetail</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>getNotificationServlet</servlet-name>
+        <servlet-class>Servlet.getNotificationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>getNotificationServlet</servlet-name>
+        <url-pattern>/getNotification</url-pattern>
+    </servlet-mapping>
 </web-app>

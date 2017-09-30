@@ -13,11 +13,12 @@
 
     <!-- DB schema will be updated if needed -->
      <property name="hbm2ddl.auto">update</property>
-    <mapping class="Entity.UnswBookActivityEntity"/>
+      <mapping class="Entity.UnswBookActivityEntity"/>
     <mapping class="Entity.UnswBookAdminEntity"/>
     <mapping class="Entity.UnswBookFriendshipEntity"/>
     <mapping class="Entity.UnswBookMessageEntity"/>
     <mapping class="Entity.UnswBookUserEntity"/>
     <mapping class="Entity.UnswBookVoteEntity"/>
+      <mapping class="Entity.UnswBookNotificationEntity"/>
   </session-factory>
 </hibernate-configuration>

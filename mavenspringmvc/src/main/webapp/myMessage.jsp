@@ -39,6 +39,9 @@
                 <li><a href="changeDetail.jsp">Change My Details</a></li>
             </ul>
             <ul class="nav nav-pills">
+                <li><a href="getNotification">Notifications</a></li>
+            </ul>
+            <ul class="nav nav-pills">
                 <li><a href="index.jsp">Log out</a></li>
             </ul>
         </div>

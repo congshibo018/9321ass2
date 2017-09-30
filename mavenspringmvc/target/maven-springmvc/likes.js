@@ -66,7 +66,6 @@ $(document).ready(function(){
         if(calltype==="-1"){
             vote = -1;
         }
-        alert(calltype+mid+vote);
         $.ajax({
             type: "POST",
             url: "vote?messageId="+mid+"&like="+vote,
