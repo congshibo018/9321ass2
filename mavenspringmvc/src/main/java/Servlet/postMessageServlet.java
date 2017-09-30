@@ -5,7 +5,6 @@ import Dao.UnswBookMessageDAO;
 import Entity.UnswBookActivityEntity;
 import Entity.UnswBookMessageEntity;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;

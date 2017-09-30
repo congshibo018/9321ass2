@@ -8,8 +8,8 @@ $(document).ready(function(){
         //  Take details from the div panel above it
         var parent = $(this).parent();
         var messageId = parent.attr('id');
+        var mid = parent.attr('mid');
         var state = parent.attr('data-active-state');
-
         var likes = 0;
         var dislikes = 0;
 
@@ -20,11 +20,12 @@ $(document).ready(function(){
         if (state === "0") {
             if (calltype === "Like") {
                 likes = 1;
+                calltype = "1";
                 $(this).toggleClass("green");
             }
             else if (calltype === "Dislike") {
                 dislikes = 1;
-                calltype = "Dislike";
+                calltype = "-1";
                 $(this).toggleClass("red");
             }
         }
@@ -32,13 +33,13 @@ $(document).ready(function(){
         else if (state === "1") {
             if (calltype === "Like") {
                 likes = -1;
-                calltype = "None";
+                calltype = "0";
                 $(this).toggleClass("green");
             }
             else if (calltype === "Dislike") {
                 likes = -1;
                 dislikes = 1;
-                calltype = "Dislike";
+                calltype = "-1";
                 $(this).siblings().toggleClass("green");
                 $(this).toggleClass("red");
             }
@@ -48,16 +49,32 @@ $(document).ready(function(){
             if (calltype === "Like") {
                 dislikes = -1;
                 likes = 1;
-                calltype = "Like";
+                calltype = "1";
                 $(this).siblings().removeClass("red");
                 $(this).addClass("green");
             }
             else if (calltype === "Dislike") {
                 dislikes = -1;
-                calltype = "None";
+                calltype = "0";
                 $(this).toggleClass("red");
             }
         }
+        var vote=0;
+        if (calltype==="1"){
+            vote = 1;
+        }
+        if(calltype==="-1"){
+            vote = -1;
+        }
+        alert(calltype+mid+vote);
+        $.ajax({
+            type: "POST",
+            url: "vote?messageId="+mid+"&like="+vote,
+            success: function(msg){
+                $.messager.alert("like/unlike");
+            }
+        })
+
         parent.attr('data-active-state', calltype);
         updateCounts(messageId, likes, dislikes);
         return false;
@@ -73,6 +90,7 @@ $(document).ready(function(){
         var resA = parseInt(res[0]) + likes;
         var resB = parseInt(res[1]) + dislikes;
         $(target).text(resA + " Likes, " + resB + " Dislikes");
+
     }
 
 

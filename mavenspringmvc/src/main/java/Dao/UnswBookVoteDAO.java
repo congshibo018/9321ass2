@@ -55,6 +55,31 @@ public class UnswBookVoteDAO {
         return vote;
     }
 
+    public static int getLike(int mid){
+        Session session = HibernateUtil.SESSION_FACTORY.openSession();
+        session.beginTransaction();
+
+        String hql = "FROM UnswBookVoteEntity WHERE thumbUp=1 and messageId=:mid";
+        Query q = session.createQuery(hql);
+        q.setParameter("mid",mid);
+
+        List list = q.list();
+        session.close();
+        return list.size();
+    }
+    public static int getDislike(int mid){
+        Session session = HibernateUtil.SESSION_FACTORY.openSession();
+        session.beginTransaction();
+
+        String hql = "FROM UnswBookVoteEntity WHERE thumbUp=-1 and messageId=:mid";
+        Query q = session.createQuery(hql);
+        q.setParameter("mid",mid);
+
+        List list = q.list();
+        session.close();
+        return list.size();
+    }
+
     public static void delete(UnswBookVoteEntity vote){
         Session session = HibernateUtil.SESSION_FACTORY.openSession();
         session.beginTransaction();

@@ -23,14 +23,18 @@ function showButton() {
   var role = "${role}";
   if (role === ("user")) {
     var isFriend = "${isFriend}";
-    if (isFriend == "true") {
+    var currentUserId = "${currentUserId}";
+    var userId = "${user.id}"
+    if (isFriend == "true"||currentUserId==userId) {
       document.getElementById("addFriendButton").style.display = "none";
     }
   }
   if (role === ("admin")) {
     var isBanned = "${isBanned}";
     if (isBanned == "true") {
-      document.getElementById("banUserButton").style.display = "none";
+        document.getElementById("banUserButton").innerHTML="Ban";
+    }else {
+        document.getElementById("banUserButton").innerHTML="Unban";
     }
   }
 }
@@ -49,7 +53,12 @@ function changeUserStatus() {
 <body onload="showButton()">
   <nav class="navbar navbar-default">
     <div class="container">
-      <a style="font-size: 25px;" class="navbar-brand" href="#">UNSWBook</a>
+      <c:if test="${role=='admin'}">
+      <a style="font-size: 25px;" class="navbar-brand" href="advancedSearch.jsp">UNSWBook</a>
+      </c:if>
+      <c:if test="${role=='user'}">
+        <a style="font-size: 25px;" class="navbar-brand" href="mainpage.jsp">UNSWBook</a>
+      </c:if>
     </div>
   </nav>
 
@@ -57,7 +66,7 @@ function changeUserStatus() {
     <div style="margin-bottom: 10px;">
       <h2>${user.name}</h2>
       <h4>UID: ${user.id}</h4>
-
+      <img src="${user.photo}" class="media-object" style="height:130px; width:150px;">
       <c:if test="${role=='admin'}">
         <button class="btn btn-danger" id="banUserButton" onclick="changeUserStatus()">Ban User</button>
       </c:if>

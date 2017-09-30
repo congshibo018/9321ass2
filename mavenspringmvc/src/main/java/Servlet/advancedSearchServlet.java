@@ -44,6 +44,7 @@ public class advancedSearchServlet extends HttpServlet {
         }else{
             userlist.addAll((UnswBookUserDAO.adminGetUserByFactor(nickname,gender,date,email)));
         }
+        System.out.println(userlist);
         request.setAttribute("userlist",userlist);
         if(userlist.isEmpty()){
             response.getWriter().append("no user found");

@@ -1,6 +1,8 @@
 package Servlet;
 
+import Dao.UnswBookMessageDAO;
 import Dao.UnswBookVoteDAO;
+import Entity.UnswBookMessageEntity;
 import Entity.UnswBookVoteEntity;
 
 import javax.servlet.ServletException;
@@ -17,14 +19,19 @@ public class voteServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int uid = Integer.valueOf(request.getParameter("currentUserId").toString());
+        int uid = Integer.valueOf(request.getSession().getAttribute("currentUserId").toString());
         int mid = Integer.valueOf(request.getParameter("messageId").toString());
         int like = Integer.valueOf(request.getParameter("like").toString());
-        UnswBookVoteEntity vote = new UnswBookVoteEntity();
-        vote.setMessageId(mid);
-        vote.setUserId(uid);
+        UnswBookVoteEntity vote = UnswBookVoteDAO.getVote(uid,mid);
+
         vote.setThumbUp(like);
         UnswBookVoteDAO.saveOrUpdate(vote);
 
+        UnswBookMessageEntity message = UnswBookMessageDAO.retrieve(mid);
+        int thumbUp = UnswBookVoteDAO.getLike(mid);
+        int thumbDown = UnswBookVoteDAO.getDislike(mid);
+        message.setThumbUp(thumbUp);
+        message.setThumbDown(thumbDown);
+        UnswBookMessageDAO.saveOrUpdate(message);
     }
 }

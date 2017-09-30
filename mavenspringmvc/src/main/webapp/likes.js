@@ -8,8 +8,8 @@ $(document).ready(function(){
         //  Take details from the div panel above it
         var parent = $(this).parent();
         var messageId = parent.attr('id');
+        var mid = parent.attr('mid');
         var state = parent.attr('data-active-state');
-
         var likes = 0;
         var dislikes = 0;
 
@@ -59,6 +59,22 @@ $(document).ready(function(){
                 $(this).toggleClass("red");
             }
         }
+        var vote=0;
+        if (calltype==="1"){
+            vote = 1;
+        }
+        if(calltype==="-1"){
+            vote = -1;
+        }
+        alert(calltype+mid+vote);
+        $.ajax({
+            type: "POST",
+            url: "vote?messageId="+mid+"&like="+vote,
+            success: function(msg){
+                $.messager.alert("like/unlike");
+            }
+        })
+
         parent.attr('data-active-state', calltype);
         updateCounts(messageId, likes, dislikes);
         return false;
@@ -74,6 +90,7 @@ $(document).ready(function(){
         var resA = parseInt(res[0]) + likes;
         var resB = parseInt(res[1]) + dislikes;
         $(target).text(resA + " Likes, " + resB + " Dislikes");
+
     }
 
 

@@ -19,10 +19,9 @@
 </head>
 
 <body>
-
 <nav class="navbar navbar-default">
   <div class="container">
-    <a class="navbar-brand" href="#">UNSWBook</a>
+    <a class="navbar-brand" href="index.jsp">UNSWBook</a>
   </div>
 </nav>
 

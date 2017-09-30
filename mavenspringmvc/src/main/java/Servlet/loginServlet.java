@@ -30,8 +30,9 @@ public class loginServlet extends HttpServlet {
                 int uid = UnswBookUserDAO.getUserId(username);
                 List<Integer> friendlist = UnswBookFriendshipDAO.getFriendByUserId(uid);
                 ArrayList messagelist = new ArrayList<UnswBookMessageEntity>();
-
                 ArrayList votelist = new ArrayList<UnswBookVoteEntity>();
+                ArrayList mymessagelist = new ArrayList<UnswBookMessageEntity>();
+
                 for (int i = 0; i < friendlist.size(); i++) {
                     messagelist.addAll(UnswBookMessageDAO.getMessageByUserId(friendlist.get(i)));
                 }
@@ -40,13 +41,16 @@ public class loginServlet extends HttpServlet {
                     int mid = m.getId();
                     votelist.add(UnswBookVoteDAO.getVote(uid,mid));
                 }
+                mymessagelist.addAll(UnswBookMessageDAO.getMessageByUserId(uid));
+
+                request.getSession().setAttribute("myMessageList",mymessagelist);
                 request.getSession().setAttribute("messageList", messagelist);
                 request.getSession().setAttribute("voteList",votelist);
                 request.getSession().setAttribute("currentUserId", uid);
                 request.getSession().setAttribute("role",role);
                 request.getRequestDispatcher("mainpage.jsp").forward(request, response);
             } else {
-                response.getWriter().append("login failed");
+                response.getWriter().append("login failed(check username and password if you've activated your account) otherwise you're banned");
             }
         }
 

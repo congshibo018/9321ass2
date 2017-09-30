@@ -16,7 +16,30 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
-
+<script>
+  function check() {
+      var email = document.getElementById("email").value;
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("pwd").value;
+      var name = document.getElementById("name").value;
+      if(email==""){
+          alert("email cannot be null");
+          return false;
+      }
+      if(username==""){
+          alert("username cannot be null");
+          return false;
+      }
+      if(password==""){
+          alert("password cannot be null");
+          return false;
+      }
+      if(name==""){
+          alert("name cannot be null");
+          return false;
+      }
+  }
+</script>
 <body>
 
 <nav class="navbar navbar-default">
@@ -31,7 +54,7 @@
       <h1 class="col-sm-offset-1">Register</h1>
     </div>
     <div class="panel-body">
-      <form class="form-horizontal" action="/registe" method="POST">
+      <form class="form-horizontal" action="/registe" method="POST" onsubmit="return check()">
         <div class="form-group">
           <label class="control-label col-sm-2" for="email">Email:</label>
           <div class="col-sm-5">
@@ -60,10 +83,10 @@
           <label class="control-label col-sm-2">Gender:</label>
           <div class="col-sm-5">
             <label class="radio-inline" id="gender">
-              <input type="radio" name="gender" value="male">Male
+              <input type="radio" name="gender" value="male" checked="checked">Male
             </label>
             <label class="radio-inline">
-              <input type="radio" name="gender">Female
+              <input type="radio" name="gender" value="female">Female
             </label>
           </div>
         </div>

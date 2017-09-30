@@ -26,6 +26,6 @@ public class changeUserStatusServlet extends HttpServlet {
             user.setStatus("1");
         }
         UnswBookUserDAO.saveOrUpdate(user);
-        request.getRequestDispatcher("mainpage.jsp").forward(request,response);
+        request.getRequestDispatcher("showUserDetail?uid="+uid).forward(request,response);
     }
 }

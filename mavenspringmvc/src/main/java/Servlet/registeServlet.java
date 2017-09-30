@@ -48,6 +48,7 @@ public class registeServlet extends HttpServlet {
         user.setGender(gender);
         user.setDoB(date);
         user.setEmailAddress(emailAddress);
+        user.setPhoto("default.jpeg");
         if(UnswBookUserDAO.getUserId(username)== -1&&UnswBookUserDAO.getUserIdByEmailAddress(emailAddress)==-1){
             try {
                 user = tools.emailTool.activateMail(user);

@@ -90,4 +90,13 @@
         <servlet-name>voteServlet</servlet-name>
         <url-pattern>/vote</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>changeUserDetailServlet</servlet-name>
+        <servlet-class>Servlet.changeUserDetailServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>changeUserDetailServlet</servlet-name>
+        <url-pattern>/changeUserDetail</url-pattern>
+    </servlet-mapping>
 </web-app>

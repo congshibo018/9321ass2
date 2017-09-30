@@ -32,6 +32,15 @@
         <ul class="nav nav-pills">
           <li><a href="advancedSearch.jsp">Advanced Search</a></li>
         </ul>
+        <ul class="nav nav-pills">
+          <li><a href="myMessage.jsp">My Message</a></li>
+        </ul>
+        <ul class="nav nav-pills">
+          <li><a href="changeDetail.jsp">Change My Details</a></li>
+        </ul>
+        <ul class="nav nav-pills">
+          <li><a href="login.jsp">Log out</a></li>
+        </ul>
       </div>
 
       <div class="col-sm-9">
