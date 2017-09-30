@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+    styleAllThumbs();
+
     //  Select all html elements with class thumbIcon
     $(".thumbIcon").click(function(){
         //  Determine function using content found in span (Like/Dislike)
@@ -73,12 +75,28 @@ $(document).ready(function(){
             success: function(msg){
                 $.messager.alert("like/unlike");
             }
-        })
+        });
 
         parent.attr('data-active-state', calltype);
         updateCounts(messageId, likes, dislikes);
         return false;
     });
+
+    function styleAllThumbs() {
+        //  Find all panel footers with the "Like" state
+        //  Style the <a> that is the parent element of the like
+        var upvote = $('.panel-footer[data-active-state="1"]');
+        upvote.find("span.glyphicon-thumbs-up").parent().toggleClass("green");
+
+        //  Find all panel footers with the "Dislike" state
+        //  Style the <a> that is the parent element of the dislike
+        var downvote = $('.panel-footer[data-active-state="-1"]');
+        downvote.find("span.glyphicon-thumbs-down").parent().toggleClass("red");
+
+        //  Find all panel footers with the "Neutral" state
+        //  Do nothing
+        var neutral = $('.panel-footer[data-active-state="0"]');
+    }
 
     //  Find and update small with stuff.
     function updateCounts(messageId, likes, dislikes) {
@@ -92,6 +110,5 @@ $(document).ready(function(){
         $(target).text(resA + " Likes, " + resB + " Dislikes");
 
     }
-
 
 });
