@@ -119,6 +119,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>getMyMessageServlet</servlet-name>
+        <servlet-class>Servlet.getMyMessageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>getMyMessageServlet</servlet-name>
+        <url-pattern>/getMyMessage</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>PollingNotificationServlet</servlet-name>
         <servlet-class>Servlet.PollingNotificationServlet</servlet-class>
     </servlet>

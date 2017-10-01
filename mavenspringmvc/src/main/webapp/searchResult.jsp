@@ -18,7 +18,29 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href="style.css" type="text/css" rel="stylesheet">
 </head>
+<script type="text/javascript" src="jquery-easyui-v1.4.4/jquery.min.js"></script>
 
+<script type="text/javascript">
+    setInterval(function(){
+        getMsgNum();
+    },3000);
+
+    function getMsgNum(){
+        $.ajax({
+            url:'PollingNotification',
+            type:'post',
+            dataType:'json',
+            success:function(data){
+                if(data && data.msgNum){
+                    $("#notification").html("Unread notification("+data.msgNum+")");
+                }else{
+                    $("#notification").html("Notification");
+                }
+            }
+        });
+    }
+
+</script>
 <body>
   <nav class="navbar navbar-default">
     <div class="container">
@@ -33,10 +55,13 @@
           <li><a href="advancedSearch.jsp">Advanced Search</a></li>
         </ul>
         <ul class="nav nav-pills">
-          <li><a href="myMessage.jsp">My Message</a></li>
+          <li><a href="getMyMessage">My Message</a></li>
         </ul>
         <ul class="nav nav-pills">
           <li><a href="changeDetail.jsp">Change My Details</a></li>
+        </ul>
+        <ul class="nav nav-pills">
+          <li><a href="getNotification" id="notification">Notifications</a></li>
         </ul>
         <ul class="nav nav-pills">
           <li><a href="login.jsp">Log out</a></li>

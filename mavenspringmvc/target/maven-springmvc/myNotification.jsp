@@ -19,7 +19,29 @@
     <script src="likes.js"></script>
     <link href="style.css" type="text/css" rel="stylesheet">
 </head>
+<script type="text/javascript" src="jquery-easyui-v1.4.4/jquery.min.js"></script>
 
+<script type="text/javascript">
+    setInterval(function(){
+        getMsgNum();
+    },3000);
+
+    function getMsgNum(){
+        $.ajax({
+            url:'PollingNotification',
+            type:'post',
+            dataType:'json',
+            success:function(data){
+                if(data && data.msgNum){
+                    $("#notification").html("Unread notification("+data.msgNum+")");
+                }else{
+                    $("#notification").html("Notification");
+                }
+            }
+        });
+    }
+
+</script>
 <body>
 <nav class="navbar navbar-default">
     <div class="container">
@@ -33,7 +55,7 @@
                 <li><a href="advancedSearch.jsp">Advanced Search</a></li>
             </ul>
             <ul class="nav nav-pills">
-                <li><a href="myMessage.jsp">My Message</a></li>
+                <li><a href="getMyMessage">My Message</a></li>
             </ul>
             <ul class="nav nav-pills">
                 <li><a href="changeDetail.jsp">Change My Details</a></li>

@@ -31,7 +31,6 @@ public class loginServlet extends HttpServlet {
                 List<Integer> friendlist = UnswBookFriendshipDAO.getFriendByUserId(uid);
                 ArrayList messagelist = new ArrayList<UnswBookMessageEntity>();
                 ArrayList votelist = new ArrayList<UnswBookVoteEntity>();
-                ArrayList mymessagelist = new ArrayList<UnswBookMessageEntity>();
 
                 for (int i = 0; i < friendlist.size(); i++) {
                     messagelist.addAll(UnswBookMessageDAO.getMessageByUserId(friendlist.get(i)));
@@ -41,9 +40,7 @@ public class loginServlet extends HttpServlet {
                     int mid = m.getId();
                     votelist.add(UnswBookVoteDAO.getVote(uid,mid));
                 }
-                mymessagelist.addAll(UnswBookMessageDAO.getMessageByUserId(uid));
 
-                request.getSession().setAttribute("myMessageList",mymessagelist);
                 request.getSession().setAttribute("messageList", messagelist);
                 request.getSession().setAttribute("voteList",votelist);
                 request.getSession().setAttribute("currentUserId", uid);
