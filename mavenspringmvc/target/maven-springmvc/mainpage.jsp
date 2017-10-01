@@ -73,9 +73,6 @@
         <ul class="nav nav-pills">
           <li><a href="getNotification" id="notification">Notifications</a></li>
         </ul>
-        <ul class="nav nav-pills">
-          <li><a href="index.jsp">Log out</a></li>
-        </ul>
       </div>
 
       <div class="col-sm-10">

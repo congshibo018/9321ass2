@@ -59,8 +59,10 @@ public class changeUserDetailServlet extends HttpServlet {
         }
         System.out.println(getFileName(pic));
         String fileName = getFileName(pic);
-        String imagePath = writeTo(fileName, pic);
-        user.setPhoto(imagePath);
+        if (!fileName.equals("")){
+            String imagePath = writeTo("", pic);
+            user.setPhoto(imagePath);
+        }
         UnswBookUserDAO.saveOrUpdate(user);
         request.getRequestDispatcher("mainpage.jsp").forward(request,response);
     }
