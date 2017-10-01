@@ -1,3 +1,45 @@
+@import url(//fonts.googleapis.com/css?family=Allerta);
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: grey; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(grey, white); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(grey, white); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(grey, white); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(grey, white); /* Standard syntax (must be last) */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+footer {
+  margin-top: auto;
+  padding: 15px;
+  background-color: #231F20;
+  border-bottom: 5px solid #FFCC00;
+}
+
+footer p {
+  display: inline;
+  color: #FFCC00;
+  padding: 0px;
+  margin: 0px;
+}
+
+textarea {
+  resize: none;
+}
+
+hr {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
 .center-text {
   text-align: center;
 }
@@ -7,10 +49,68 @@
   float: right;
 }
 
-.glyphicon {
-  font-size: 1.0em;
-  padding-left: 2em;
-  padding-right: 2em;
+.jumbo-custom {
+  background-color: #fff;
+  margin-bottom: 0;
+}
+
+.jumbo-custom > h1 {
+  font-family: Allerta;
+}
+
+.well-white {
+  background-color: white;
+}
+
+.header-bar {
+  background-color: #fff;
+}
+
+.header-strip {
+  padding: 5px;
+  border-bottom: 3px solid #231F20;
+  margin-bottom: 20px;
+  background-color: #FFCC00;
+}
+
+a.header-logo {
+  font-size: 30px;
+  font-family: Allerta;
+  text-decoration: none;
+  color: #000;
+}
+
+.login-strip {
+  padding: 5px;
+  margin-bottom: 20px;
+  background-color: #FFCC00; 
+}
+
+.register-strip {
+  padding: 5px;
+  margin-bottom: 20px;
+  background-color: #00FF00;
+}
+
+.admin-strip {
+  padding: 5px;
+  margin-bottom: 20px;
+  background-color: red; 
+}
+
+.logout-button {
+  margin-top: 5px;
+}
+
+.pane {
+  background-color: #ffffff;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border: 1px solid #fff000;
+}
+
+a.thumbIcon {
+  text-decoration: none;
 }
 
 a.green {
@@ -21,12 +121,17 @@ a.red {
   color: red;
 }
 
-textarea {
-  resize: none;
+a.postTogg {
+  font-size: 1.8em;
+  text-decoration: none;
+  text-align: center; 
+  display: block;
 }
 
-.panel-footer {
-  text-align: center;
+.glyphicon {
+  font-size: 1.0em;
+  padding-left: 2em;
+  padding-right: 2em;
 }
 
 /*
@@ -43,8 +148,43 @@ textarea {
   align-items: stretch;
   -webkit-justify-content: center;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
 a.list-group-item:hover {
     background-color: #47D7FF;
+}
+
+ul.nav-pills > li {
+  border: 1px solid #000;
+  background-color: #FFD11B;
+}
+
+ul.nav-pills > li > a {
+  color: #464646;
+}
+
+ul.nav-pills > li > a:hover {
+  color: #ffffff;
+  background-color: #464646;
+}
+
+.vertical-menu a {
+    margin-top: 10px;
+    background-color: #FFD11B;
+    color: black;
+    display: block;
+    padding: 12px 12px 12px 12px;
+    text-decoration: none;
+}
+
+.vertical-menu a:hover {
+    background-color: #000;
+    color: white;
+    border-left: 5px solid #D94827;
+}
+
+.vertical-menu a.active {
+    background-color: #4CAF50;
+    color: white;
 }
