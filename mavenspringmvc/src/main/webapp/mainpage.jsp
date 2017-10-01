@@ -50,7 +50,7 @@
     <div class="header-bar">
       <div class="container">
         <a href="mainpage.jsp" class="header-logo">UNSWBook</a>
-        <button class="btn btn-default right-text logout-button">Logout</button>
+        <button class="btn btn-default right-text logout-button" onclick="window.location.href='index.jsp'">Logout</button>
       </div>
 
     </div>
@@ -58,10 +58,9 @@
     </div>
   </nav>
 
-  <div id="content" class="container">
+  <div  class="container">
     <div class="row">
       <div class="col-sm-2">
-<<<<<<< HEAD
         <ul class="nav nav-pills">
           <li><a href="advancedSearch.jsp">Advanced Search</a></li>
         </ul>
@@ -74,19 +73,6 @@
         <ul class="nav nav-pills">
           <li><a href="getNotification" id="notification">Notifications</a></li>
         </ul>
-        <ul class="nav nav-pills">
-          <li><a href="index.jsp">Log out</a></li>
-        </ul>
-=======
-        <div class="vertical-menu">
-          <a href="mainpage.jsp">Main Page</a>
-          <a href="advancedSearch.jsp">Advanced Search</a>
-          <a href="myMessage.jsp">My Message</a>
-          <a href="changeDetail.jsp">Change My Details</a>
-          <a href="getNotification" id="notification">Notifications</a>
-          <a href="index.jsp">Log out</a>
-        </div>
->>>>>>> refs/remotes/origin/master
       </div>
 
       <div class="col-sm-10">
@@ -103,7 +89,7 @@
               <label for="content">Post:</label>
               <textarea name="content" class="form-control" rows="3" id="content"></textarea>
             </div>
-            <div class="form-group center-flex"">
+            <div class="form-group center-flex">
               <label for="url">URL:</label>
               <input type="text" name="url" class="form-control" id="url">
             </div>

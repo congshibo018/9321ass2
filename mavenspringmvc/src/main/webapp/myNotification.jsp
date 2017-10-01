@@ -46,7 +46,7 @@
     <div class="header-bar">
       <div class="container">
         <a href="mainpage.jsp" class="header-logo">UNSWBook</a>
-        <button class="btn btn-default right-text logout-button">Logout</button>
+          <button class="btn btn-default right-text logout-button" onclick="window.location.href('index.jsp')">Logout</button>
       </div>
 
     </div>

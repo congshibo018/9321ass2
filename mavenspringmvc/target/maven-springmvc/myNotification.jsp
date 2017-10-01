@@ -9,15 +9,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="utf-8">
-    <title>My Notifications | UNSWBook</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="likes.js"></script>
-    <link href="style.css" type="text/css" rel="stylesheet">
+  <meta charset="utf-8">
+  <title>Advanced Search | UNSWBook</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link href="style.css" type="text/css" rel="stylesheet">
 </head>
 <script type="text/javascript" src="jquery-easyui-v1.4.4/jquery.min.js"></script>
 
@@ -43,12 +42,19 @@
 
 </script>
 <body>
-<nav class="navbar navbar-default">
-    <div class="container">
-        <a style="font-size: 25px;" class="navbar-brand" href="mainpage.jsp">UNSWBook</a>
+  <nav>
+    <div class="header-bar">
+      <div class="container">
+        <a href="mainpage.jsp" class="header-logo">UNSWBook</a>
+          <button class="btn btn-default right-text logout-button" onclick="window.location.href('index.jsp')">Logout</button>
+      </div>
+
     </div>
-</nav>
-<div class="container">
+    <div class="header-strip">
+    </div>
+  </nav>
+
+  <div id="content" class="container">
     <div class="row">
         <div class="col-sm-2">
             <ul class="nav nav-pills">
@@ -67,25 +73,25 @@
                 <li><a href="index.jsp">Log out</a></li>
             </ul>
         </div>
-        <div class="col-sm-10">
-
-            <h1>Your Notifications: </h1>
-            <c:forEach items="${notificationList}" var="notificationlist" varStatus="loop">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="media">
-                            ${notificationlist.title}
-                            ${notificationlist.text}
-                            ${notificationlist.time}
-                        </div>
-                    </div>
-
-                </div>
-            </c:forEach>
-
+      </div>
+      <div class="col-sm-10">
+        <div class="well well-white">
+          <h1>Your Notifications: </h1>
+          <c:forEach items="${notificationList}" var="notificationlist" varStatus="loop">
+            <div class="alert alert-info">
+              <strong>${notificationlist.title}</strong>
+              <p>${notificationlist.text}</p>
+              <p><small>Received at ${notificationlist.time}</small></p>
+            </div>
+          </c:forEach>
         </div>
+      </div>
     </div>
-</div>
+  </div>
+
+  <footer>
+    <p>COMP9321 Social Media Assignment</p><p class="right-text">UNSWBook</p>
+  </footer>
 
 </body>
 </html>

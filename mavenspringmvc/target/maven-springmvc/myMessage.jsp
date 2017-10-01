@@ -43,12 +43,19 @@
 
 </script>
 <body>
-<nav class="navbar navbar-default">
-    <div class="container">
-        <a style="font-size: 25px;" class="navbar-brand" href="mainpage.jsp">UNSWBook</a>
+  <nav>
+    <div class="header-bar">
+      <div class="container">
+        <a href="mainpage.jsp" class="header-logo">UNSWBook</a>
+          <button class="btn btn-default right-text logout-button" onclick="window.location.href('index.jsp')">Logout</button>
+      </div>
+
     </div>
-</nav>
-<div class="container">
+    <div class="header-strip">
+    </div>
+  </nav>
+
+  <div id="content" class="container">
     <div class="row">
         <div class="col-sm-2">
             <ul class="nav nav-pills">
@@ -67,32 +74,37 @@
                 <li><a href="index.jsp">Log out</a></li>
             </ul>
         </div>
-        <div class="col-sm-10">
-
-            <h1>Your Feed: </h1>
-            <c:forEach items="${myMessageList}" var="messagelist" varStatus="loop">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="media">
-                            <div class="media-left media-middle">
-                                <img src="${messagelist.image}" class="media-object" style="height:130px; width:150px;">
-                            </div>
-                            <div class="media-body">
-                                <div>
-                                    <small id="cnt_${loop.index}" class="right-text">${messagelist.thumbUp} Likes, ${messagelist.thumbDown} Dislikes</small>
-                                    <h4 class="media-heading">${messagelist.title} <small>Posted at ${messagelist.time}</small></h4>
-                                </div>
-                                <p>${messagelist.content}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </c:forEach>
-
+      </div>
+      <div class="col-sm-10">
+        <div class="pane">
+          <h1>Your Messages: </h1>
         </div>
+        <c:forEach items="${myMessageList}" var="messagelist" varStatus="loop">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="media">
+                <div class="media-left media-middle">
+                  <img src="${messagelist.image}" class="media-object" style="height:130px; width:150px;">
+                </div>
+                <div class="media-body">
+                  <small id="cnt_${loop.index}" class="right-text">${messagelist.thumbUp} Likes, ${messagelist.thumbDown} Dislikes</small>
+                  <h4 class="media-heading">${messagelist.title} <small>Posted at ${messagelist.time}</small></h4>
+                  <p>${messagelist.content}</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </c:forEach>
+
+      </div>
     </div>
-</div>
+  </div>
+
+  <footer>
+    <p>COMP9321 Social Media Assignment</p><p class="right-text">UNSWBook</p>
+  </footer>
+
 
 </body>
 </html>

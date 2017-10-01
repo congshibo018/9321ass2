@@ -12,7 +12,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Mainpage | UNSWBook</title>
+  <title>Search Results | UNSWBook</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -42,13 +42,19 @@
 
 </script>
 <body>
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <a style="font-size: 25px;" class="navbar-brand" href="mainpage.jsp">UNSWBook</a>
+  <nav>
+    <div class="header-bar">
+      <div class="container">
+        <a href="mainpage.jsp" class="header-logo">UNSWBook</a>
+        <button class="btn btn-default right-text logout-button" onclick="window.location.href('index.jsp')">Logout</button>
+      </div>
+
+    </div>
+    <div class="header-strip">
     </div>
   </nav>
 
-  <div class="container">
+  <div id="content" class="container">
     <div class="row">
       <div class="col-sm-2">
         <ul class="nav nav-pills">
@@ -67,22 +73,27 @@
           <li><a href="login.jsp">Log out</a></li>
         </ul>
       </div>
-
+      
       <div class="col-sm-9">
-        <h1>Users found: </h1>
-        <c:forEach items="${userlist}" var="userList">
-          <div class="list-group">
-            <a href="showUserDetail?uid=${userList.id}" class="list-group-item">
-              <h5 class="list-group-item-heading">Username: ${userList.name}</h5>
-              <p class="list-group-item-text">User ID: ${userList.id}</p>
-            </a>
-          </div>
-        </c:forEach>
-
-
+        <div class="well well-white">
+          <h1>Users found: </h1>
+          <c:forEach items="${userlist}" var="userList">
+            <div class="list-group">
+              <a href="showUserDetail?uid=${userList.id}" class="list-group-item">
+                <h5 class="list-group-item-heading">Username: ${userList.name}</h5>
+                <p class="list-group-item-text">User ID: ${userList.id}</p>
+              </a>
+            </div>
+          </c:forEach>
+        </div>
       </div>
+    
     </div>
   </div>
+
+  <footer>
+    <p>COMP9321 Social Media Assignment</p><p class="right-text">UNSWBook</p>
+  </footer>
 
 </body>
 
