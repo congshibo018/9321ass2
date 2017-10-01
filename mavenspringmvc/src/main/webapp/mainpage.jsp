@@ -21,6 +21,29 @@
   <link href="style.css" type="text/css" rel="stylesheet">
 </head>
 
+<script type="text/javascript" src="jquery-easyui-v1.4.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+    setInterval(function(){
+        getMsgNum();
+    },3000);
+
+    function getMsgNum(){
+        $.ajax({
+            url:'PollingNotification',
+            type:'post',
+            dataType:'json',
+            success:function(data){
+                if(data && data.msgNum){
+                    $("#notification").html("Unread notification("+data.msgNum+")");
+                }else{
+                    $("#notification").html("Notification");
+                }
+            }
+        });
+    }
+
+</script>
 
 <body>
   <nav>
@@ -43,6 +66,7 @@
           <a href="advancedSearch.jsp">Advanced Search</a>
           <a href="myMessage.jsp">My Message</a>
           <a href="changeDetail.jsp">Change My Details</a>
+          <a href="getNotification" id="notification">Notifications</a>
           <a href="index.jsp">Log out</a>
         </div>
       </div>

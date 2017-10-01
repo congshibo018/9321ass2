@@ -99,4 +99,31 @@
         <servlet-name>changeUserDetailServlet</servlet-name>
         <url-pattern>/changeUserDetail</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>getNotificationServlet</servlet-name>
+        <servlet-class>Servlet.getNotificationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>getNotificationServlet</servlet-name>
+        <url-pattern>/getNotification</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>deleteServlet</servlet-name>
+        <servlet-class>Servlet.deleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteServlet</servlet-name>
+        <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PollingNotificationServlet</servlet-name>
+        <servlet-class>Servlet.PollingNotificationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PollingNotificationServlet</servlet-name>
+        <url-pattern>/PollingNotification</url-pattern>
+    </servlet-mapping>
 </web-app>

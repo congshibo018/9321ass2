@@ -1,6 +1,10 @@
 package Servlet;
 
+import Dao.UnswBookActivityDAO;
 import Dao.UnswBookFriendshipDAO;
+import Dao.UnswBookNotificationDAO;
+import Dao.UnswBookUserDAO;
+import Entity.UnswBookActivityEntity;
 import Entity.UnswBookFriendshipEntity;
 
 import javax.servlet.ServletException;
@@ -9,6 +13,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Timestamp;
+
+import Entity.UnswBookNotificationEntity;
+import Entity.UnswBookUserEntity;
 import tools.webSocket;
 @WebServlet(name = "activateFriendServlet")
 public class activateFriendServlet extends HttpServlet {
@@ -31,10 +39,43 @@ public class activateFriendServlet extends HttpServlet {
             UnswBookFriendshipDAO.saveOrUpdate(fs1);
             UnswBookFriendshipDAO.saveOrUpdate(fs2);
 
+            Timestamp current_time = new Timestamp(System.currentTimeMillis());
+            UnswBookUserEntity friend = UnswBookUserDAO.retrieve(friendId);
+            UnswBookNotificationEntity notification = new UnswBookNotificationEntity();
+            notification.setUid(userId);
+            notification.setTitle("Friend request accepted");
+            notification.setText(friend.getName()+" accept your friend request :)  ");
+            notification.setTime(current_time);
+            UnswBookNotificationDAO.saveOrUpdate(notification);
+
+            UnswBookActivityEntity activity = new UnswBookActivityEntity();
+            activity.setActivity("accept friend request from "+userId);
+            activity.setTime(current_time);
+            activity.setUserId(friendId);
+            UnswBookActivityDAO.saveOrUpdate(activity);//friend activity
+
         }else{
             UnswBookFriendshipDAO.delete(fs1);
             UnswBookFriendshipDAO.delete(fs2);
+
+            Timestamp current_time = new Timestamp(System.currentTimeMillis());
+            UnswBookUserEntity friend = UnswBookUserDAO.retrieve(friendId);
+            UnswBookNotificationEntity notification = new UnswBookNotificationEntity();
+            notification.setUid(userId);
+            notification.setTitle("Friend request rejected");
+            notification.setText(friend.getName()+" reject your friend request :( ");
+            notification.setTime(current_time);
+            UnswBookNotificationDAO.saveOrUpdate(notification);
+
+            UnswBookActivityEntity activity = new UnswBookActivityEntity();
+            activity.setActivity("reject friend request from "+userId);
+            activity.setTime(current_time);
+            activity.setUserId(friendId);
+            UnswBookActivityDAO.saveOrUpdate(activity);
         }
+
+
+
         request.getSession().setAttribute("currentUserId",userId);
         request.getRequestDispatcher("mainpage.jsp").forward(request,response);
 

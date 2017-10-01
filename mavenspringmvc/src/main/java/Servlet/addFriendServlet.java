@@ -23,7 +23,6 @@ public class addFriendServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int userId = Integer.valueOf(request.getSession().getAttribute("currentUserId").toString());
         int friendId = Integer.valueOf(request.getParameter("fid").toString());
-        System.out.println(friendId);
         UnswBookFriendshipEntity friendship = new UnswBookFriendshipEntity();
         friendship.setUid(userId);
         friendship.setFid(friendId);
