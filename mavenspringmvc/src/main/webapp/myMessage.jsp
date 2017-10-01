@@ -88,6 +88,9 @@
                 </div>
               </div>
             </div>
+            <div class="panel-footer center-text">
+              <a href='delete?item="message"&id="yes"' class="btn btn-danger">Delete Message</a>
+            </div>
           </div>
         </c:forEach>
       </div>

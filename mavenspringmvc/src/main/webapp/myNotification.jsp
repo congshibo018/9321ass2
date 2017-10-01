@@ -25,6 +25,24 @@
         getMsgNum();
     },3000);
 
+    function delNotification() {
+      $.ajax({
+        url:'delete',
+        type:'get',
+        data: {
+          item="notification",
+          id="yes"
+        },
+        success: function(response) {
+          console.log("deleted something");
+        },
+        error: function(xhr) {
+          console.log("oh noes");
+        }
+      });
+      return false;
+    }
+
     function getMsgNum(){
         $.ajax({
             url:'PollingNotification',
@@ -69,7 +87,8 @@
         <div class="well well-white">
           <h1>Your Notifications: </h1>
           <c:forEach items="${notificationList}" var="notificationlist" varStatus="loop">
-            <div class="alert alert-info">
+            <div class="alert alert-info alert-dismissable">
+              <a href="#" onclick="delNotification()" class="close" data-dismiss="alert" aria-label="close">&times;</a>
               <strong>${notificationlist.title}</strong>
               <p>${notificationlist.text}</p>
               <p><small>Received at ${notificationlist.time}</small></p>
