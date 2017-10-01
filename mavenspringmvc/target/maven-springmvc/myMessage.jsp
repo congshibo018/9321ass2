@@ -41,6 +41,14 @@
         });
     }
 
+    function delMessage(id) {
+        $.ajax({
+            url:'delete?item=message&id='+id,
+            type:'POST',
+        });
+        return false;
+    }
+
 </script>
 <body>
   <nav>
@@ -61,7 +69,7 @@
         <div class="vertical-menu">
           <a href="mainpage.jsp">Main Page</a>
           <a href="advancedSearch.jsp">Advanced Search</a>
-          <a href="myMessage.jsp">My Message</a>
+          <a href="getMyMessage">My Message</a>
           <a href="changeDetail.jsp">Change My Details</a>
           <a href="index.jsp">Log out</a>
         </div>
@@ -88,12 +96,15 @@
                 </div>
               </div>
             </div>
+            <div class="panel-footer center-text">
+              <a href="#" class="btn btn-danger" onclick="delMessage(${messagelist.id})" >Delete Message</a>
+            </div>
           </div>
         </c:forEach>
       </div>
     </div>
   </div>
-
+  </div>
   <footer>
     <p>COMP9321 Social Media Assignment</p><p class="right-text">UNSWBook</p>
   </footer>

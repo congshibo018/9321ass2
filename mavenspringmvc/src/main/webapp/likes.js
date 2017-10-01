@@ -71,9 +71,7 @@ $(document).ready(function(){
         $.ajax({
             type: "POST",
             url: "vote?messageId="+mid+"&like="+vote,
-            success: function(msg){
-                $.messager.alert("like/unlike");
-            }
+
         });
 
         parent.attr('data-active-state', calltype);

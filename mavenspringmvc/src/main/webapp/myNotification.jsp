@@ -25,20 +25,11 @@
         getMsgNum();
     },3000);
 
-    function delNotification() {
+    function delNotification(id) {
       $.ajax({
-        url:'delete',
-        type:'get',
-        data: {
-          item="notification",
-          id="yes"
-        },
-        success: function(response) {
-          console.log("deleted something");
-        },
-        error: function(xhr) {
-          console.log("oh noes");
-        }
+        url:'delete?item=notification&id='+id,
+        type:'POST',
+
       });
       return false;
     }
@@ -78,7 +69,7 @@
         <div class="vertical-menu">
           <a href="mainpage.jsp">Main Page</a>
           <a href="advancedSearch.jsp">Advanced Search</a>
-          <a href="myMessage.jsp">My Message</a>
+          <a href="getMyMessage">My Message</a>
           <a href="changeDetail.jsp">Change My Details</a>
           <a href="index.jsp">Log out</a>
         </div>
@@ -88,7 +79,7 @@
           <h1>Your Notifications: </h1>
           <c:forEach items="${notificationList}" var="notificationlist" varStatus="loop">
             <div class="alert alert-info alert-dismissable">
-              <a href="#" onclick="delNotification()" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <a href="#" onclick="delNotification(${notificationlist.id})" class="close" data-dismiss="alert" aria-label="close">&times;</a>
               <strong>${notificationlist.title}</strong>
               <p>${notificationlist.text}</p>
               <p><small>Received at ${notificationlist.time}</small></p>
