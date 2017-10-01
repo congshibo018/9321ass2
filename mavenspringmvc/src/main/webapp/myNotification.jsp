@@ -45,17 +45,16 @@
         </div>
       </div>
       <div class="col-sm-10">
-        <h1>Your Notifications: </h1>
-        <c:forEach items="${notificationList}" var="notificationlist" varStatus="loop">
-          <div class="well well-white">
+        <div class="well well-white">
+          <h1>Your Notifications: </h1>
+          <c:forEach items="${notificationList}" var="notificationlist" varStatus="loop">
             <div class="alert alert-info">
               <strong>${notificationlist.title}</strong>
               <p>${notificationlist.text}</p>
               <p><small>Received at ${notificationlist.time}</small></p>
             </div>
-          </div>
-        </c:forEach>
-
+          </c:forEach>
+        </div>
       </div>
     </div>
   </div>
