@@ -17,6 +17,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <script src="likes.js"></script>
+  <script src="misc.js"></script>
   <link href="style.css" type="text/css" rel="stylesheet">
 </head>
 
@@ -44,57 +45,60 @@
 
 </script>
 
-
 <body>
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <a style="font-size: 25px;" class="navbar-brand" href="#">UNSWBook</a>
+  <nav>
+    <div class="header-bar">
+      <div class="container">
+        <a href="mainpage.jsp" class="header-logo">UNSWBook</a>
+        <button class="btn btn-default right-text logout-button" onclick="window.location.href='index.jsp'">Logout</button>
+      </div>
+
+    </div>
+    <div class="header-strip">
     </div>
   </nav>
-  <div class="container">
+
+  <div  class="container">
     <div class="row">
       <div class="col-sm-2">
-        <ul class="nav nav-pills">
-          <li><a href="advancedSearch.jsp">Advanced Search</a></li>
-        </ul>
-        <ul class="nav nav-pills">
-          <li><a href="getMyMessage">My Message</a></li>
-        </ul>
-        <ul class="nav nav-pills">
-          <li><a href="changeDetail.jsp">Change My Details</a></li>
-        </ul>
-        <ul class="nav nav-pills">
-          <li><a href="getNotification" id="notification">Notifications</a></li>
-        </ul>
-        <ul class="nav nav-pills">
-          <li><a href="index.jsp">Log out</a></li>
-        </ul>
+        <div class="vertical-menu">
+          <a href="mainpage.jsp">Main Page</a>
+          <a href="advancedSearch.jsp">Advanced Search</a>
+          <a href="myMessage.jsp">My Message</a>
+          <a href="changeDetail.jsp">Change My Details</a>
+          <a href="getNotification" id="notification">Notifications</a>
+          <a href="index.jsp">Log out</a>
+        </div>
       </div>
 
       <div class="col-sm-10">
-        <form action="postMessage" method="POST" class="center-flex" enctype="multipart/form-data">
-        <fieldset>
-          <legend>Speak your mind here:</legend>
-          <div class="form-group center-flex">
-            <label for="title">Post title:</label>
-            <input type="text" name="title" class="form-control" id="title">
-          </div>
-          <div class="form-group center-flex">
-            <label for="content">Post:</label>
-            <textarea name="content" class="form-control" rows="3" id="content"></textarea>
-          </div>
-          <div class="form-group center-flex">
-            <label for="url">URL:</label>
-            <input type="text" name="url" class="form-control" id="url">
-          </div>
+        <div class="pane">
+          <a href="#" id="postTogg" class="postTogg">Make a comment!</a>
+
+          <form action="postMessage" method="POST" class="center-flex" enctype="multipart/form-data">
+          <hr>
+            <div class="form-group center-flex">
+              <label for="title">Post title:</label>
+              <input type="text" name="title" class="form-control" id="title">
+            </div>
+            <div class="form-group center-flex">
+              <label for="content">Post:</label>
+              <textarea name="content" class="form-control" rows="3" id="content"></textarea>
+            </div>
+            <div class="form-group center-flex">
+              <label for="url">URL:</label>
+              <input type="text" name="url" class="form-control" id="url">
+            </div>
             <div class="form-group center-flex">
                 <label for="url">Image:</label>
                 <input type="file" name="image" class="form-control" id="image">
             </div>
-          <button type="submit" class="btn btn-default">Post</button>
-        </fieldset>
-      </form>
-      <h1>Your Feed: </h1>
+            <button type="submit" class="btn btn-primary">Post</button>
+            <a href="#" class="btn btn-default" id="postCancel">Cancel</a>
+          </form>
+        </div>      
+
+        <h1>Your Feed: </h1>
       <c:forEach items="${messageList}" var="messagelist" varStatus="loop">
         <div class="panel panel-default">
           <div class="panel-body">
@@ -112,7 +116,7 @@
             </div>
           </div>
 
-          <div id="msg_${loop.index}" data-active-state="${voteList[loop.index].thumbUp}" mid="${messagelist.id}" class="panel-footer">
+          <div id="msg_${loop.index}" data-active-state="${voteList[loop.index].thumbUp}" mid="${messagelist.id}" class="panel-footer center-text">
             <a class="thumbIcon" href="#">
               <span class="glyphicon glyphicon-thumbs-up">Like</span>
             </a>
@@ -126,6 +130,10 @@
       </div>
     </div>
   </div>
+
+  <footer>
+    <p>COMP9321 Social Media Assignment</p><p class="right-text">UNSWBook</p>
+  </footer>
 
 </body>
 

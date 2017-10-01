@@ -50,7 +50,7 @@
     <div class="header-bar">
       <div class="container">
         <a href="mainpage.jsp" class="header-logo">UNSWBook</a>
-        <button class="btn btn-default right-text logout-button">Logout</button>
+        <button class="btn btn-default right-text logout-button" onclick="window.location.href='index.jsp'">Logout</button>
       </div>
 
     </div>
@@ -58,7 +58,7 @@
     </div>
   </nav>
 
-  <div id="content" class="container">
+  <div  class="container">
     <div class="row">
       <div class="col-sm-2">
         <div class="vertical-menu">
@@ -85,7 +85,7 @@
               <label for="content">Post:</label>
               <textarea name="content" class="form-control" rows="3" id="content"></textarea>
             </div>
-            <div class="form-group center-flex"">
+            <div class="form-group center-flex">
               <label for="url">URL:</label>
               <input type="text" name="url" class="form-control" id="url">
             </div>
