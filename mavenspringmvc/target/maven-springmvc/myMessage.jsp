@@ -42,6 +42,7 @@
     }
 
     function delMessage(id) {
+        document.getElementById("hide"+id).style.display="none";
         $.ajax({
             url:'delete?item=message&id='+id,
             type:'POST',
@@ -83,7 +84,7 @@
           <h1>Your Messages: </h1>
         </div>
         <c:forEach items="${myMessageList}" var="messagelist" varStatus="loop">
-          <div class="panel panel-default">
+          <div class="panel panel-default" id="hide${messagelist.id}">
             <div class="panel-body">
               <div class="media">
                 <div class="media-left media-middle">
