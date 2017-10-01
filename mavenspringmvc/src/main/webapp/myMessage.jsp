@@ -57,24 +57,19 @@
 
   <div id="content" class="container">
     <div class="row">
-        <div class="col-sm-2">
-            <ul class="nav nav-pills">
-                <li><a href="advancedSearch.jsp">Advanced Search</a></li>
-            </ul>
-            <ul class="nav nav-pills">
-                <li><a href="getMyMessage">My Message</a></li>
-            </ul>
-            <ul class="nav nav-pills">
-                <li><a href="changeDetail.jsp">Change My Details</a></li>
-            </ul>
-            <ul class="nav nav-pills">
-                <li><a href="getNotification" id="notification">Notifications</a></li>
-            </ul>
-            <ul class="nav nav-pills">
-                <li><a href="index.jsp">Log out</a></li>
-            </ul>
+      <div class="col-sm-2">
+        <div class="vertical-menu">
+          <a href="mainpage.jsp">Main Page</a>
+          <a href="advancedSearch.jsp">Advanced Search</a>
+          <a href="myMessage.jsp">My Message</a>
+          <a href="changeDetail.jsp">Change My Details</a>
+          <a href="index.jsp">Log out</a>
         </div>
       </div>
+      <div class="col-sm-10">
+        <div class="pane">
+          <h1>Your Messages: </h1>
+        </div>
       <div class="col-sm-10">
         <div class="pane">
           <h1>Your Messages: </h1>
@@ -93,10 +88,8 @@
                 </div>
               </div>
             </div>
-
           </div>
         </c:forEach>
-
       </div>
     </div>
   </div>
