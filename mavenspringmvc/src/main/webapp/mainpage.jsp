@@ -61,23 +61,6 @@
   <div id="content" class="container">
     <div class="row">
       <div class="col-sm-2">
-<<<<<<< HEAD
-        <ul class="nav nav-pills">
-          <li><a href="advancedSearch.jsp">Advanced Search</a></li>
-        </ul>
-        <ul class="nav nav-pills">
-          <li><a href="getMyMessage">My Message</a></li>
-        </ul>
-        <ul class="nav nav-pills">
-          <li><a href="changeDetail.jsp">Change My Details</a></li>
-        </ul>
-        <ul class="nav nav-pills">
-          <li><a href="getNotification" id="notification">Notifications</a></li>
-        </ul>
-        <ul class="nav nav-pills">
-          <li><a href="index.jsp">Log out</a></li>
-        </ul>
-=======
         <div class="vertical-menu">
           <a href="mainpage.jsp">Main Page</a>
           <a href="advancedSearch.jsp">Advanced Search</a>
@@ -86,7 +69,6 @@
           <a href="getNotification" id="notification">Notifications</a>
           <a href="index.jsp">Log out</a>
         </div>
->>>>>>> refs/remotes/origin/master
       </div>
 
       <div class="col-sm-10">
