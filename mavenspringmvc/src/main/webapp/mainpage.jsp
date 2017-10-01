@@ -61,18 +61,14 @@
   <div  class="container">
     <div class="row">
       <div class="col-sm-2">
-        <ul class="nav nav-pills">
-          <li><a href="advancedSearch.jsp">Advanced Search</a></li>
-        </ul>
-        <ul class="nav nav-pills">
-          <li><a href="getMyMessage">My Message</a></li>
-        </ul>
-        <ul class="nav nav-pills">
-          <li><a href="changeDetail.jsp">Change My Details</a></li>
-        </ul>
-        <ul class="nav nav-pills">
-          <li><a href="getNotification" id="notification">Notifications</a></li>
-        </ul>
+        <div class="vertical-menu">
+          <a href="mainpage.jsp">Main Page</a>
+          <a href="advancedSearch.jsp">Advanced Search</a>
+          <a href="myMessage.jsp">My Message</a>
+          <a href="changeDetail.jsp">Change My Details</a>
+          <a href="getNotification" id="notification">Notifications</a>
+          <a href="index.jsp">Log out</a>
+        </div>
       </div>
 
       <div class="col-sm-10">

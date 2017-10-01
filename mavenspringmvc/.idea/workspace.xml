@@ -105,11 +105,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="changeUserDetailServlet.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="changeUserDetailServlet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Servlet/changeUserDetailServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="64" column="9" lean-forward="true" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
+            <state relative-caret-position="400">
+              <caret line="73" column="24" lean-forward="true" selection-start-line="73" selection-start-column="24" selection-end-line="73" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -159,12 +159,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mainpage.jsp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mainpage.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/mainpage.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="77" column="29" lean-forward="true" selection-start-line="77" selection-start-column="29" selection-end-line="77" selection-end-column="29" />
-              <folding />
+            <state relative-caret-position="257">
+              <caret line="78" column="14" lean-forward="true" selection-start-line="78" selection-start-column="14" selection-end-line="78" selection-end-column="14" />
+              <folding>
+                <marker date="1506851697000" expanded="false" signature="4024:4050" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -265,8 +267,8 @@
         <option value="$PROJECT_DIR$/src/main/webapp/searchResult.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/userDetail.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/advancedSearch.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/mainpage.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/Servlet/changeUserDetailServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/mainpage.jsp" />
       </list>
     </option>
   </component>
@@ -787,12 +789,12 @@
       <workItem from="1506252795849" duration="47580000" />
       <workItem from="1506564925124" duration="16478000" />
       <workItem from="1506648924146" duration="41567000" />
-      <workItem from="1506847410945" duration="4139000" />
+      <workItem from="1506847410945" duration="4328000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="192373000" />
+    <option name="totallyTimeSpent" value="192562000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1440" height="797" extended-state="6" />
@@ -1184,14 +1186,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/mainpage.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="77" column="29" lean-forward="true" selection-start-line="77" selection-start-column="29" selection-end-line="77" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/advancedSearch.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
@@ -1199,14 +1193,6 @@
           <folding>
             <marker date="1506849643000" expanded="true" signature="3736:3745" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/changeDetail.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="43" column="14" lean-forward="true" selection-start-line="43" selection-start-column="14" selection-end-line="43" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1240,10 +1226,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Servlet/changeUserDetailServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="64" column="9" lean-forward="true" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
+        <state relative-caret-position="400">
+          <caret line="73" column="24" lean-forward="true" selection-start-line="73" selection-start-column="24" selection-end-line="73" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/changeDetail.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="43" column="14" lean-forward="true" selection-start-line="43" selection-start-column="14" selection-end-line="43" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/mainpage.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="78" column="14" lean-forward="true" selection-start-line="78" selection-start-column="14" selection-end-line="78" selection-end-column="14" />
+          <folding>
+            <marker date="1506851697000" expanded="false" signature="4024:4050" ph="..." />
           </folding>
         </state>
       </provider>
