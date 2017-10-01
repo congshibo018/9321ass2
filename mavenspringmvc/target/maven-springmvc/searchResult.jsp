@@ -45,7 +45,12 @@
   <nav>
     <div class="header-bar">
       <div class="container">
-        <a href="mainpage.jsp" class="header-logo">UNSWBook</a>
+        <c:if test="${role=='user'}">
+          <a href="mainpage.jsp" class="header-logo">UNSWBook</a>
+        </c:if>
+        <c:if test="${role=='admin'}">
+          <a href="advancedSearch.jsp" class="header-logo">UNSWBook</a>
+        </c:if>
         <button class="btn btn-default right-text logout-button" onclick="window.location.href('index.jsp')">Logout</button>
       </div>
 
@@ -56,6 +61,7 @@
 
   <div id="content" class="container">
     <div class="row">
+      <c:if test="${role=='user'}">
       <div class="col-sm-2">
         <ul class="nav nav-pills">
           <li><a href="advancedSearch.jsp">Advanced Search</a></li>
@@ -73,7 +79,7 @@
           <li><a href="login.jsp">Log out</a></li>
         </ul>
       </div>
-      
+      </c:if>
       <div class="col-sm-9">
         <div class="well well-white">
           <h1>Users found: </h1>

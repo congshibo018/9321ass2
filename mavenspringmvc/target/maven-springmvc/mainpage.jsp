@@ -60,6 +60,7 @@
 
   <div  class="container">
     <div class="row">
+      <c:if test="${role=='user'}">
       <div class="col-sm-2">
         <div class="vertical-menu">
           <a href="mainpage.jsp">Main Page</a>
@@ -70,7 +71,7 @@
           <a href="index.jsp">Log out</a>
         </div>
       </div>
-
+      </c:if>
       <div class="col-sm-10">
         <div class="pane">
           <a href="#" id="postTogg" class="postTogg">Make a comment!</a>

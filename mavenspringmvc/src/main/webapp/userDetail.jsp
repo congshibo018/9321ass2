@@ -32,9 +32,9 @@ function showButton() {
   if (role === ("admin")) {
     var isBanned = "${isBanned}";
     if (isBanned == "true") {
-        document.getElementById("banUserButton").innerHTML="Ban";
-    }else {
         document.getElementById("banUserButton").innerHTML="Unban";
+    }else {
+        document.getElementById("banUserButton").innerHTML="Ban";
     }
   }
 }
@@ -54,7 +54,12 @@ function changeUserStatus() {
   <nav>
     <div class="header-bar">
       <div class="container">
-        <a href="#" class="header-logo">UNSWBook</a>
+        <c:if test="${role=='user'}">
+          <a href="mainpage.jsp" class="header-logo">UNSWBook</a>
+        </c:if>
+        <c:if test="${role=='admin'}">
+          <a href="advancedSearch.jsp" class="header-logo">UNSWBook</a>
+        </c:if>
         <button class="btn btn-default right-text logout-button" onclick="window.location.href='index.jsp'">Logout</button>
       </div>
 
@@ -65,6 +70,7 @@ function changeUserStatus() {
 
   <div id="content" class="container">
     <div class="row">
+      <c:if test="${role=='user'}">
       <div class="col-sm-2">
         <div class="vertical-menu">
           <a href="mainpage.jsp">Main Page</a>
@@ -74,6 +80,7 @@ function changeUserStatus() {
           <a href="index.jsp">Log out</a>
         </div>
       </div>
+      </c:if>
       <div class="col-sm-10">
         <div class="well well-white" style="margin-bottom: 10px;">
           <h2>${user.name}</h2>

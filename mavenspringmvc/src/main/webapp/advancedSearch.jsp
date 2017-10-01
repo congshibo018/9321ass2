@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: congshibo
@@ -23,7 +24,13 @@
   <nav>
     <div class="header-bar">
       <div class="container">
+        <c:if test="${role=='user'}">
         <a href="mainpage.jsp" class="header-logo">UNSWBook</a>
+        </c:if>
+        <c:if test="${role=='admin'}">
+          <a href="advancedSearch.jsp" class="header-logo">UNSWBook</a>
+        </c:if>
+
         <button class="btn btn-default right-text logout-button" onclick="window.location.href='index.jsp'">Logout</button>
       </div>
 
@@ -34,6 +41,7 @@
 
   <div id="content" class="container">
     <div class="row">
+      <c:if test="${role=='user'}">
       <div class="col-sm-2">
         <div class="vertical-menu">
           <a href="mainpage.jsp">Main Page</a>
@@ -44,7 +52,7 @@
           <a href="index.jsp">Log out</a>
         </div>
       </div>
-
+      </c:if>
       <div class="col-sm-10">
         <div class="pane">
           <h1 class="col-sm-offset-1">Advanced Search</h1>
