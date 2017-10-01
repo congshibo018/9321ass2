@@ -4,10 +4,12 @@ $(document).ready(function(){
 
     $("#postTogg").click(function(){
         $("#postForm").fadeToggle();
+        return false;
     });
 
     $("#postCancel").click(function(){
         $("#postForm").fadeToggle();
+        return false;
     });
 
 });
