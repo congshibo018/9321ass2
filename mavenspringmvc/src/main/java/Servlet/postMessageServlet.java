@@ -4,7 +4,7 @@ import Dao.UnswBookActivityDAO;
 import Dao.UnswBookMessageDAO;
 import Entity.UnswBookActivityEntity;
 import Entity.UnswBookMessageEntity;
-
+import unsw.curation.api.tokenization.ExtractionKeywordImpl;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.*;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
 
 @WebServlet(name = "postMessageServlet")
@@ -31,8 +32,13 @@ public class postMessageServlet extends HttpServlet {
 
         int userId = Integer.valueOf(request.getSession().getAttribute("currentUserId").toString());
         Timestamp current_time = new Timestamp(System.currentTimeMillis());
-
-        String fileName = String.valueOf(userId)+current_time+getFileName(pic);
+        String fileName="";
+        System.out.println(getFileName(pic));
+        if(getFileName(pic).equals("")||getFileName(pic)==null){
+            fileName = "nopic.jpg";
+        }else{
+            fileName = String.valueOf(userId)+current_time+getFileName(pic);
+        }
         String imagePath = writeTo(fileName, pic);
 
         UnswBookMessageEntity message = new UnswBookMessageEntity();
@@ -53,6 +59,46 @@ public class postMessageServlet extends HttpServlet {
         activity.setUserId(userId);
         UnswBookActivityDAO.saveOrUpdate(activity);
 
+        ExtractionKeywordImpl ek = new ExtractionKeywordImpl();
+        String file = getServletConfig().getServletContext().getRealPath("/")+"englishStopwords.txt";
+        String keys = "";
+        try {
+            keys = ek.ExtractSentenceKeyword(content,new File(file));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        ExtractionKeywordImpl ek2 = new ExtractionKeywordImpl();
+        String bullyfile = getServletConfig().getServletContext().getRealPath("/")+"bullyWord.txt";
+        String bullyWord = "";
+        try {
+            bullyWord = ek2.ExtractFileKeyword(new File(bullyfile),new File(file));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        String[] bullyWords = bullyWord.split("\\,");
+        System.out.println(bullyWord);
+        System.out.println(keys);
+        int flag=0;
+        String bullyWordUsed ="";
+        for(String word:bullyWords){
+            if (keys.contains(word)){
+                flag = 1;
+                bullyWordUsed = bullyWordUsed + ","+word;
+            }
+        }
+        if (flag==1){
+            UnswBookActivityEntity bullyactivity = new UnswBookActivityEntity();
+            bullyactivity.setActivity("Bullying related word used: "+bullyWordUsed.replaceFirst(",",""));
+            bullyactivity.setTime(current_time);
+            bullyactivity.setUserId(userId);
+            UnswBookActivityDAO.saveOrUpdate(bullyactivity);
+            try {
+                tools.emailTool.bullyRelatedPostMail(userId,bullyWordUsed.replaceFirst(",",""));
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
+        }
         request.getRequestDispatcher("mainpage.jsp").forward(request,response);
 
     }

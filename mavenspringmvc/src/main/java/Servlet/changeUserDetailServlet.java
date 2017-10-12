@@ -57,12 +57,10 @@ public class changeUserDetailServlet extends HttpServlet {
             java.sql.Date date = new java.sql.Date(dob.getTime());
             user.setDoB(date);
         }
-        System.out.println(getFileName(pic));
+        System.out.println(getServletContext().getRealPath("/"));
         String fileName = getFileName(pic);
-        if (!fileName.equals("")){
-            String imagePath = writeTo("", pic);
-            user.setPhoto(imagePath);
-        }
+        String imagePath = writeTo(fileName, pic);
+        user.setPhoto(imagePath);
         UnswBookUserDAO.saveOrUpdate(user);
         request.getRequestDispatcher("mainpage.jsp").forward(request,response);
     }

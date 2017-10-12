@@ -71,6 +71,20 @@ public class UnswBookAdminDAO {
         return uid;
     }
 
+    public static List<UnswBookAdminEntity> findAll(){
+        Session session = HibernateUtil.SESSION_FACTORY.openSession();
+        session.beginTransaction();
+        String hql = "FROM UnswBookAdminEntity WHERE 1=1";
+        Query q = session.createQuery(hql);
+
+        if(q == null){
+            return null;
+        }
+        List list = q.list();
+        session.close();
+        return list;
+    }
+
     public static void delete(UnswBookAdminEntity admin){
         Session session = HibernateUtil.SESSION_FACTORY.openSession();
         session.beginTransaction();

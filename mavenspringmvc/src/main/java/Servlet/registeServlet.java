@@ -57,7 +57,7 @@ public class registeServlet extends HttpServlet {
             }
             UnswBookUserDAO.saveOrUpdate(user);
             UnswBookActivityEntity activity = new UnswBookActivityEntity();
-            activity.setActivity("regist");
+            activity.setActivity("registe");
             Timestamp current_time = new Timestamp(System.currentTimeMillis());
             activity.setTime(current_time);
             activity.setUserId(UnswBookUserDAO.getUserId(username));

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="9321ass2">
+    <output-path>$PROJECT_DIR$/out/artifacts/9321ass2</output-path>
+    <root id="archive" name="9321ass2.war">
+      <element id="dir-copy" path="$PROJECT_DIR$" />
+    </root>
+  </artifact>
+</component>

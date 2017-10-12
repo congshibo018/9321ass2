@@ -20,7 +20,18 @@
   <script src="misc.js"></script>
   <link href="style.css" type="text/css" rel="stylesheet">
 </head>
-
+<script>
+    function check() {
+        var title = document.getElementById("title").value;
+        var content = document.getElementById("content").value;
+        var url = document.getElementById("url").value;
+        var image = document.getElementById("image").value;
+        if(title==""&&content==""&&url==""&&image==""){
+            alert("you can't post NOTHING");
+            return false;
+        }
+    }
+</script>
 <script type="text/javascript" src="jquery-easyui-v1.4.4/jquery.min.js"></script>
 
 <script type="text/javascript">
@@ -42,14 +53,13 @@
             }
         });
     }
-
 </script>
 
 <body>
   <nav>
     <div class="header-bar">
       <div class="container">
-        <a href="mainpage.jsp" class="header-logo">UNSWBook</a>
+        <a href="showMessage" class="header-logo">UNSWBook</a>
         <button class="btn btn-default right-text logout-button" onclick="window.location.href='index.jsp'">Logout</button>
       </div>
 
@@ -63,7 +73,7 @@
       <c:if test="${role=='user'}">
       <div class="col-sm-2">
         <div class="vertical-menu">
-          <a href="mainpage.jsp">Main Page</a>
+          <a href="showMessage">Main Page</a>
           <a href="advancedSearch.jsp">Advanced Search</a>
           <a href="getMyMessage">My Message</a>
           <a href="changeDetail.jsp">Change My Details</a>
@@ -76,7 +86,7 @@
         <div class="pane">
           <a href="#" id="postTogg" class="postTogg">Make a comment!</a>
 
-          <form action="postMessage" method="POST" class="center-flex" enctype="multipart/form-data">
+          <form action="postMessage" method="POST" class="center-flex" enctype="multipart/form-data" onsubmit="return check()">
           <hr>
             <div class="form-group center-flex">
               <label for="title">Post title:</label>

@@ -1,7 +1,9 @@
 package tools;
 
 
+import Dao.UnswBookAdminDAO;
 import Dao.UnswBookUserDAO;
+import Entity.UnswBookAdminEntity;
 import Entity.UnswBookFriendshipEntity;
 import Entity.UnswBookUserEntity;
 import org.springframework.messaging.MessagingException;
@@ -12,6 +14,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -57,6 +61,17 @@ public class emailTool {
                 +"<br><a href='"+URL+"/activateFriend?agree=1"+"&friendId="+friendId+"&userId="+userId+"'> YES"+"</a>    "
                 +"<a href='"+URL+"/activateFriend?agree=0"+"&friendId="+friendId+"&userId="+userId+"'> NO"+"</a></p>";
         emailTool.sendMail(friend.getEmailAddress(), TITLE, content);
+    }
+
+    public static void bullyRelatedPostMail(int userId, String bullyword) throws AddressException, MessagingException, NoSuchAlgorithmException {
+        UnswBookUserEntity user = UnswBookUserDAO.retrieve(userId);
+
+        String content = "<p>UNSWBOOK user "+user.getName()+" posted a bully related message <br>using words: "+bullyword+"</p>";
+        List<UnswBookAdminEntity> adminList = UnswBookAdminDAO.findAll();
+        for (UnswBookAdminEntity admin:adminList){
+            emailTool.sendMail(admin.getEmailAddress(), TITLE, content);
+        }
+
     }
 
     public static void sendMail(String to,String title,String content) throws AddressException, MessagingException {

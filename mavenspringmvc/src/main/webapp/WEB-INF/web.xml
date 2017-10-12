@@ -135,4 +135,13 @@
         <servlet-name>PollingNotificationServlet</servlet-name>
         <url-pattern>/PollingNotification</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>showMessageServlet</servlet-name>
+        <servlet-class>Servlet.showMessageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>showMessageServlet</servlet-name>
+        <url-pattern>/showMessage</url-pattern>
+    </servlet-mapping>
 </web-app>

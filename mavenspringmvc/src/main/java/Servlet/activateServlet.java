@@ -24,7 +24,6 @@ public class activateServlet extends HttpServlet {
         Long time = System.currentTimeMillis();
         int uid = UnswBookUserDAO.getUserIdByEmailAddress(email);
         UnswBookUserEntity u = UnswBookUserDAO.retrieve(uid);
-
         if (u != null) {
             if (u.getStatus().equals("0") && u.getActivateTime().getTime() > time) {
                 System.out.println(token);
@@ -41,11 +40,11 @@ public class activateServlet extends HttpServlet {
                     request.getRequestDispatcher("login?role=user&username="+u.getUsername()+"&password="+u.getPassword()).forward(request,response);
                 } else {
                     request.getSession().setAttribute("failReason","token");
-                    request.getRequestDispatcher("registFail.jsp").forward(request,response);
+                    request.getRequestDispatcher("registeFail.jsp").forward(request,response);
                 }
             } else {
                 request.getSession().setAttribute("failReason","already activated");
-                request.getRequestDispatcher("registFail.jsp").forward(request,response);
+                request.getRequestDispatcher("registeFail.jsp").forward(request,response);
             }
         }
     }
