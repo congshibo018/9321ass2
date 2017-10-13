@@ -1,8 +1,8 @@
 package Servlet;
 
-import Dao.UnswBookMessageDAO;
-import Dao.UnswBookNotificationDAO;
-import Dao.UnswBookVoteDAO;
+import Dao.*;
+import Entity.UnswBookEntityEntity;
+import Entity.UnswBookTripleEntity;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,6 +22,12 @@ public class deleteServlet extends HttpServlet {
         if(item.equals("message")){
             int mid = Integer.valueOf(request.getParameter("id"));
             UnswBookMessageDAO.delete(UnswBookMessageDAO.retrieve(mid));
+
+            UnswBookEntityEntity entity = new UnswBookEntityEntity();
+            entity.setEntityId("M"+mid);
+            UnswBookEntityDAO.delete(entity);
+
+            UnswBookTripleDAO.deleteRelated("M"+mid);
         }
         if(item.equals("notification")){
             int nid = Integer.valueOf(request.getParameter("id"));

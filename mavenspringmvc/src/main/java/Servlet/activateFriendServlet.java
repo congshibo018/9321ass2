@@ -1,11 +1,7 @@
 package Servlet;
 
-import Dao.UnswBookActivityDAO;
-import Dao.UnswBookFriendshipDAO;
-import Dao.UnswBookNotificationDAO;
-import Dao.UnswBookUserDAO;
-import Entity.UnswBookActivityEntity;
-import Entity.UnswBookFriendshipEntity;
+import Dao.*;
+import Entity.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Timestamp;
 
-import Entity.UnswBookNotificationEntity;
-import Entity.UnswBookUserEntity;
 import tools.webSocket;
 @WebServlet(name = "activateFriendServlet")
 public class activateFriendServlet extends HttpServlet {
@@ -53,6 +47,21 @@ public class activateFriendServlet extends HttpServlet {
             activity.setTime(current_time);
             activity.setUserId(friendId);
             UnswBookActivityDAO.saveOrUpdate(activity);//friend activity
+
+            UnswBookTripleEntity triple1 = new UnswBookTripleEntity();
+            UnswBookTripleEntity triple2 = new UnswBookTripleEntity();
+
+            triple1.setNodeFrom("P"+userId);
+            triple1.setEdge("E1");
+            triple1.setNodeTo("P"+friendId);
+
+            triple2.setNodeFrom("P"+friendId);
+            triple2.setEdge("E1");
+            triple2.setNodeTo("P"+userId);
+
+            UnswBookTripleDAO.saveOrUpdate(triple1);
+            UnswBookTripleDAO.saveOrUpdate(triple2);
+
 
         }else{
             UnswBookFriendshipDAO.delete(fs1);

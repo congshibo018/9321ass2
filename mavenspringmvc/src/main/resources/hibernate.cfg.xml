@@ -7,21 +7,23 @@
     <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="connection.url">jdbc:mysql://localhost:3306/UNSWBook</property>
+    <property name="connection.username">root</property>
+    <property name="connection.password">123</property>
       <property name="Connection.useUnicode">true </property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
     <property name="show_sql">true</property>
-    <property name="connection.username">root</property>
-    <property name="connection.password">123</property>
     <!-- <property name="connection.password"/> -->
 
     <!-- DB schema will be updated if needed -->
      <property name="hbm2ddl.auto">update</property>
-      <mapping class="Entity.UnswBookActivityEntity"/>
+    <mapping class="Entity.UnswBookActivityEntity"/>
     <mapping class="Entity.UnswBookAdminEntity"/>
     <mapping class="Entity.UnswBookFriendshipEntity"/>
     <mapping class="Entity.UnswBookMessageEntity"/>
     <mapping class="Entity.UnswBookUserEntity"/>
     <mapping class="Entity.UnswBookVoteEntity"/>
       <mapping class="Entity.UnswBookNotificationEntity"/>
+    <mapping class="Entity.UnswBookEntityEntity"/>
+    <mapping class="Entity.UnswBookTripleEntity"/>
   </session-factory>
 </hibernate-configuration>

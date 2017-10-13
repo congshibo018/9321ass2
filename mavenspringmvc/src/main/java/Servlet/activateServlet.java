@@ -1,6 +1,8 @@
 package Servlet;
 
+import Dao.UnswBookEntityDAO;
 import Dao.UnswBookUserDAO;
+import Entity.UnswBookEntityEntity;
 import Entity.UnswBookUserEntity;
 import tools.emailTool;
 
@@ -37,6 +39,26 @@ public class activateServlet extends HttpServlet {
                         e.printStackTrace();
                     }
                     UnswBookUserDAO.saveOrUpdate(u);
+
+                    UnswBookEntityEntity entity1 = new UnswBookEntityEntity();
+                    UnswBookEntityEntity entity2 = new UnswBookEntityEntity();
+                    UnswBookEntityEntity entity3 = new UnswBookEntityEntity();
+                    entity1.setEntityId("P"+u.getId());
+                    entity1.setEntityAttribute("Type");
+                    entity1.setAttributeValue("Person");
+
+                    entity2.setEntityId("P"+u.getId());
+                    entity2.setEntityAttribute("Class");
+                    entity2.setAttributeValue("entityNode");
+
+                    entity3.setEntityId("P"+u.getId());
+                    entity3.setEntityAttribute("Name");
+                    entity3.setAttributeValue(u.getName());
+
+                    UnswBookEntityDAO.saveOrUpdate(entity1);
+                    UnswBookEntityDAO.saveOrUpdate(entity2);
+                    UnswBookEntityDAO.saveOrUpdate(entity3);
+
                     request.getRequestDispatcher("login?role=user&username="+u.getUsername()+"&password="+u.getPassword()).forward(request,response);
                 } else {
                     request.getSession().setAttribute("failReason","token");

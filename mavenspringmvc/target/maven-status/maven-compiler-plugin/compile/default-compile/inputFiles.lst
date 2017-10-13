@@ -12,6 +12,7 @@
 /Users/congshibo/IdeaProjects/mavenspringmvc/src/main/java/Servlet/activateServlet.java
 /Users/congshibo/IdeaProjects/mavenspringmvc/src/main/java/Entity/UnswBookUserEntity.java
 /Users/congshibo/IdeaProjects/mavenspringmvc/src/main/java/Util/HibernateUtil.java
+/Users/congshibo/IdeaProjects/mavenspringmvc/src/main/java/Dao/UnswBookTripleDAO.java
 /Users/congshibo/IdeaProjects/mavenspringmvc/src/main/java/Dao/UnswBookVoteDAO.java
 /Users/congshibo/IdeaProjects/mavenspringmvc/src/main/java/Servlet/getMyMessageServlet.java
 /Users/congshibo/IdeaProjects/mavenspringmvc/src/main/java/Dao/UnswBookMessageDAO.java
@@ -19,6 +20,7 @@
 /Users/congshibo/IdeaProjects/mavenspringmvc/src/main/java/Servlet/loginServlet.java
 /Users/congshibo/IdeaProjects/mavenspringmvc/src/main/java/Servlet/PollingNotificationServlet.java
 /Users/congshibo/IdeaProjects/mavenspringmvc/src/main/java/tools/webSocket.java
+/Users/congshibo/IdeaProjects/mavenspringmvc/src/main/java/Dao/UnswBookEntityDAO.java
 /Users/congshibo/IdeaProjects/mavenspringmvc/src/main/java/Entity/UnswBookVoteEntity.java
 /Users/congshibo/IdeaProjects/mavenspringmvc/src/main/java/Servlet/addFriendServlet.java
 /Users/congshibo/IdeaProjects/mavenspringmvc/src/main/java/Servlet/activateFriendServlet.java
@@ -29,5 +31,7 @@
 /Users/congshibo/IdeaProjects/mavenspringmvc/src/main/java/Servlet/showUserDetailServlet.java
 /Users/congshibo/IdeaProjects/mavenspringmvc/src/main/java/Servlet/voteServlet.java
 /Users/congshibo/IdeaProjects/mavenspringmvc/src/main/java/tools/emailTool.java
+/Users/congshibo/IdeaProjects/mavenspringmvc/src/main/java/Entity/UnswBookEntityEntity.java
+/Users/congshibo/IdeaProjects/mavenspringmvc/src/main/java/Entity/UnswBookTripleEntity.java
 /Users/congshibo/IdeaProjects/mavenspringmvc/src/main/java/Servlet/postMessageServlet.java
 /Users/congshibo/IdeaProjects/mavenspringmvc/src/main/java/Entity/UnswBookMessageEntity.java

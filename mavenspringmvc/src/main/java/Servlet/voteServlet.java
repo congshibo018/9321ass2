@@ -1,13 +1,7 @@
 package Servlet;
 
-import Dao.UnswBookMessageDAO;
-import Dao.UnswBookNotificationDAO;
-import Dao.UnswBookUserDAO;
-import Dao.UnswBookVoteDAO;
-import Entity.UnswBookMessageEntity;
-import Entity.UnswBookNotificationEntity;
-import Entity.UnswBookUserEntity;
-import Entity.UnswBookVoteEntity;
+import Dao.*;
+import Entity.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -48,5 +42,18 @@ public class voteServlet extends HttpServlet {
         notification.setText(user.getName()+" like your post!");
         notification.setTime(current_time);
         UnswBookNotificationDAO.saveOrUpdate(notification);
+
+        UnswBookTripleEntity triple = UnswBookTripleDAO.getVoteTripleId("P"+String.valueOf(uid),"M"+String.valueOf(mid));
+        if(like==1){
+            triple.setEdge("E3");
+            UnswBookTripleDAO.saveOrUpdate(triple);
+        }
+        if(like==-1){
+            triple.setEdge("E4");
+            UnswBookTripleDAO.saveOrUpdate(triple);
+        }
+        if(like==0){
+            UnswBookTripleDAO.delete(triple);
+        }
     }
 }

@@ -1,9 +1,13 @@
 package Servlet;
 
 import Dao.UnswBookActivityDAO;
+import Dao.UnswBookEntityDAO;
 import Dao.UnswBookMessageDAO;
+import Dao.UnswBookTripleDAO;
 import Entity.UnswBookActivityEntity;
+import Entity.UnswBookEntityEntity;
 import Entity.UnswBookMessageEntity;
+import Entity.UnswBookTripleEntity;
 import unsw.curation.api.tokenization.ExtractionKeywordImpl;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -50,8 +54,33 @@ public class postMessageServlet extends HttpServlet {
         message.setThumbUp(0);
         message.setThumbDown(0);
         message.setImage(imagePath);
-        System.out.println(message.getUserId());
         UnswBookMessageDAO.saveOrUpdate(message);
+
+        int mid = UnswBookMessageDAO.getMaxId();
+        UnswBookEntityEntity entity1 = new UnswBookEntityEntity();
+        UnswBookEntityEntity entity2 = new UnswBookEntityEntity();
+        UnswBookEntityEntity entity3 = new UnswBookEntityEntity();
+        entity1.setEntityId("M"+mid);
+        entity1.setEntityAttribute("Type");
+        entity1.setAttributeValue("Message");
+
+        entity2.setEntityId("M"+mid);
+        entity2.setEntityAttribute("Class");
+        entity2.setAttributeValue("entityNode");
+
+        entity3.setEntityId("M"+mid);
+        entity3.setEntityAttribute("Title");
+        entity3.setAttributeValue(message.getTitle());
+
+        UnswBookEntityDAO.saveOrUpdate(entity1);
+        UnswBookEntityDAO.saveOrUpdate(entity2);
+        UnswBookEntityDAO.saveOrUpdate(entity3);
+
+        UnswBookTripleEntity triple = new UnswBookTripleEntity();
+        triple.setNodeFrom("P"+userId);
+        triple.setNodeTo("M"+mid);
+        triple.setEdge("E2");
+        UnswBookTripleDAO.saveOrUpdate(triple);
 
         UnswBookActivityEntity activity = new UnswBookActivityEntity();
         activity.setActivity("post message: "+title);

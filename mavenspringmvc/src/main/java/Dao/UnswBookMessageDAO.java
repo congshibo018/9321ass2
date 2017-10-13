@@ -5,6 +5,7 @@ import Util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class UnswBookMessageDAO {
@@ -16,7 +17,6 @@ public class UnswBookMessageDAO {
         session.saveOrUpdate(message);
         session.getTransaction().commit();
         session.close();
-
     }
 
     public static UnswBookMessageEntity retrieve(int id){
@@ -50,5 +50,13 @@ public class UnswBookMessageDAO {
         session.remove(message);
         session.getTransaction().commit();
         session.close();
+    }
+    public static int getMaxId(){
+        Session session = HibernateUtil.SESSION_FACTORY.openSession();
+        session.beginTransaction();
+        String hql = "SELECT max(id)FROM UnswBookMessageEntity WHERE 1=1";
+        Query q = session.createQuery(hql);
+        int id = (Integer)q.uniqueResult();
+        return id;
     }
 }
