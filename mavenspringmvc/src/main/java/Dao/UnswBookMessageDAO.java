@@ -43,6 +43,21 @@ public class UnswBookMessageDAO {
         return list;
 
     }
+
+    public static List<UnswBookMessageEntity> getMessageByTitle(String title){
+        Session session = HibernateUtil.SESSION_FACTORY.openSession();
+        session.beginTransaction();
+        String hql = "FROM UnswBookMessageEntity WHERE title=:title";
+        Query q = session.createQuery(hql);
+        q.setParameter("title",title);
+        if(q == null){
+            return null;
+        }
+        List list = q.list();
+        session.close();
+        return list;
+
+    }
     public static void delete(UnswBookMessageEntity message){
         Session session = HibernateUtil.SESSION_FACTORY.openSession();
         session.beginTransaction();

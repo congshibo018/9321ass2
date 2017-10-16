@@ -106,8 +106,7 @@ public class postMessageServlet extends HttpServlet {
         }
 
         String[] bullyWords = bullyWord.split("\\,");
-        System.out.println(bullyWord);
-        System.out.println(keys);
+
         int flag=0;
         String bullyWordUsed ="";
         for(String word:bullyWords){
