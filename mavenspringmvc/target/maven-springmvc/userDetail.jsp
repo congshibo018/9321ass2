@@ -77,6 +77,8 @@ function changeUserStatus() {
           <a href="advancedSearch.jsp">Advanced Search</a>
           <a href="getMyMessage">My Message</a>
           <a href="changeDetail.jsp">Change My Details</a>
+          <a href="getNotification" id="notification">Notifications</a>
+          <a href="graphSearch.jsp">Graph Search</a>
           <a href="index.jsp">Log out</a>
         </div>
       </div>

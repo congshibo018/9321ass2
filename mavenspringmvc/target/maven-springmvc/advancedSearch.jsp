@@ -49,9 +49,17 @@
           <a href="getMyMessage">My Message</a>
           <a href="changeDetail.jsp">Change My Details</a>
           <a href="getNotification" id="notification">Notifications</a>
+          <a href="graphSearch.jsp">Graph Search</a>
           <a href="index.jsp">Log out</a>
         </div>
       </div>
+      </c:if>
+      <c:if test="${role=='admin'}">
+        <div class="col-sm-2">
+          <div class="vertical-menu">
+            <a href="graphSearch.jsp">Graph Search</a>
+          </div>
+        </div>
       </c:if>
       <div class="col-sm-10">
         <div class="pane">

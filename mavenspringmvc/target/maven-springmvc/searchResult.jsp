@@ -63,21 +63,12 @@
     <div class="row">
       <c:if test="${role=='user'}">
       <div class="col-sm-2">
-        <ul class="nav nav-pills">
-          <li><a href="advancedSearch.jsp">Advanced Search</a></li>
-        </ul>
-        <ul class="nav nav-pills">
-          <li><a href="getMyMessage">My Message</a></li>
-        </ul>
-        <ul class="nav nav-pills">
-          <li><a href="changeDetail.jsp">Change My Details</a></li>
-        </ul>
-        <ul class="nav nav-pills">
-          <li><a href="getNotification" id="notification">Notifications</a></li>
-        </ul>
-        <ul class="nav nav-pills">
-          <li><a href="login.jsp">Log out</a></li>
-        </ul>
+          <a href="advancedSearch.jsp">Advanced Search</a>
+          <a href="getMyMessage">My Message</a>
+          <a href="changeDetail.jsp">Change My Details</a>
+          <a href="getNotification" id="notification">Notifications</a>
+          <a href="graphSearch.jsp">Graph Search</a>
+          <a href="login.jsp">Log out</a>
       </div>
       </c:if>
       <div class="col-sm-9">
