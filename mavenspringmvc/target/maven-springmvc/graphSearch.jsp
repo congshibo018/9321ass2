@@ -17,6 +17,29 @@
     <script src="likes.js"></script>
     <script src="misc.js"></script>
     <link href="style.css" type="text/css" rel="stylesheet">
+    <script>
+        function changeInput(){
+            var method =document.getElementById("methodChoose").value;
+            if(method=="searchUserByName"||method=="searchMessageByTitle"||method=="searchFriendsOfFriends"){
+                $("input[type='radio']").removeAttr('checked');
+                document.getElementById("factor").type="text";
+                document.getElementById("factor1").style.display="";
+                document.getElementById("factor2").style.display="none";
+            }
+            if(method=="searchUserByDob"){
+                $("input[type='radio']").removeAttr('checked');
+                document.getElementById("factor").type="date";
+                document.getElementById("factor1").style.display="";
+                document.getElementById("factor2").style.display="none";
+            }
+            if(method=="searchUserByGender"){
+                document.getElementById("factor").value="";
+                document.getElementById("factor").type="text";
+                document.getElementById("factor1").style.display="none";
+                document.getElementById("factor2").style.display="";
+            }
+        }
+    </script>
 </head>
 <body>
 <nav>
@@ -65,10 +88,18 @@
         <form class="form-horizontal" action="getGraph" method="POST">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="factor">Value:</label>
-                <div class="col-sm-5">
+                <div class="col-sm-5" id="factor1">
                     <input type="text" class="form-control" id="factor" placeholder="Enter value" name="factor">
                 </div>
-                <select name="method">
+                <div class="col-sm-5" style="display: none" id="factor2">
+                    <label class="radio-inline">
+                        <input type="radio" name="factor" value="male">Male
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="factor" value="female">Female
+                    </label>
+                </div>
+                <select name="method" id="methodChoose" onchange="changeInput()">
                     <option value="searchUserByName">searchUserByName</option>
                     <option value="searchUserByDob">searchUserByDob</option>
                     <option value="searchMessageByTitle">searchMessageByTitle</option>

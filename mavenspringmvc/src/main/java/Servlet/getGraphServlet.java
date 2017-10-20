@@ -53,15 +53,22 @@ public class getGraphServlet extends HttpServlet {
             for(Object t:tripleList){
                 UnswBookTripleEntity triple = (UnswBookTripleEntity)t;
                 entityList.addAll(UnswBookEntityDAO.getEntityByEntityId(triple.getNodeTo()));
-                result += triple.getNodeFrom()+ " -> "+triple.getNodeTo()+";";
+                result += triple.getNodeFrom()+ " -> "+triple.getNodeTo()+" [label="+replaceEdge(triple.getEdge())+"];";
             }
             for(Object e:entityList){
                 UnswBookEntityEntity entity = (UnswBookEntityEntity) e;
-                if(entity.getEntityAttribute().equals("Title")){
+                if(entity.getEntityAttribute().equals("Title")&&!entity.getAttributeValue().equals("")){
                     result+=" "+entity.getEntityId()+"[group=Message,label="+entity.getAttributeValue()+"];";
                 }
-                if(entity.getEntityAttribute().equals("Name")){
+                if(entity.getEntityAttribute().equals("Title")&&entity.getAttributeValue().equals("")){
+                    result+=" "+entity.getEntityId()+"[group=Message];";
+                }
+
+                if(entity.getEntityAttribute().equals("Name")&&!entity.getAttributeValue().equals("")){
                     result+=" "+entity.getEntityId()+"[group=Person,label="+entity.getAttributeValue()+"];";
+                }
+                if(entity.getEntityAttribute().equals("Name")&&entity.getAttributeValue().equals("")){
+                    result+=" "+entity.getEntityId()+"[group=Person];";
                 }
             }
 
@@ -85,15 +92,22 @@ public class getGraphServlet extends HttpServlet {
             for(Object t:tripleList){
                 UnswBookTripleEntity triple = (UnswBookTripleEntity)t;
                 entityList.addAll(UnswBookEntityDAO.getEntityByEntityId(triple.getNodeTo()));
-                result += triple.getNodeFrom()+ " -> "+triple.getNodeTo()+";";
+                result += triple.getNodeFrom()+ " -> "+triple.getNodeTo()+" [label="+replaceEdge(triple.getEdge())+"];";
             }
             for(Object e:entityList){
                 UnswBookEntityEntity entity = (UnswBookEntityEntity) e;
-                if(entity.getEntityAttribute().equals("Title")){
+                if(entity.getEntityAttribute().equals("Title")&&!entity.getAttributeValue().equals("")){
                     result+=" "+entity.getEntityId()+"[group=Message,label="+entity.getAttributeValue()+"];";
                 }
-                if(entity.getEntityAttribute().equals("Name")){
+                if(entity.getEntityAttribute().equals("Title")&&entity.getAttributeValue().equals("")){
+                    result+=" "+entity.getEntityId()+"[group=Message];";
+                }
+
+                if(entity.getEntityAttribute().equals("Name")&&!entity.getAttributeValue().equals("")){
                     result+=" "+entity.getEntityId()+"[group=Person,label="+entity.getAttributeValue()+"];";
+                }
+                if(entity.getEntityAttribute().equals("Name")&&entity.getAttributeValue().equals("")){
+                    result+=" "+entity.getEntityId()+"[group=Person];";
                 }
             }
         }else if(method.equals("searchUserByDob")){
@@ -128,15 +142,22 @@ public class getGraphServlet extends HttpServlet {
             for(Object t:tripleList){
                 UnswBookTripleEntity triple = (UnswBookTripleEntity)t;
                 entityList.addAll(UnswBookEntityDAO.getEntityByEntityId(triple.getNodeTo()));
-                result += triple.getNodeFrom()+ " -> "+triple.getNodeTo()+" [label="+triple.getEdge()+"];";
+                result += triple.getNodeFrom()+ " -> "+triple.getNodeTo()+" [label="+replaceEdge(triple.getEdge())+"];";
             }
             for(Object e:entityList){
                 UnswBookEntityEntity entity = (UnswBookEntityEntity) e;
-                if(entity.getEntityAttribute().equals("Title")){
+                if(entity.getEntityAttribute().equals("Title")&&!entity.getAttributeValue().equals("")){
                     result+=" "+entity.getEntityId()+"[group=Message,label="+entity.getAttributeValue()+"];";
                 }
-                if(entity.getEntityAttribute().equals("Name")){
+                if(entity.getEntityAttribute().equals("Title")&&entity.getAttributeValue().equals("")){
+                    result+=" "+entity.getEntityId()+"[group=Message];";
+                }
+
+                if(entity.getEntityAttribute().equals("Name")&&!entity.getAttributeValue().equals("")){
                     result+=" "+entity.getEntityId()+"[group=Person,label="+entity.getAttributeValue()+"];";
+                }
+                if(entity.getEntityAttribute().equals("Name")&&entity.getAttributeValue().equals("")){
+                    result+=" "+entity.getEntityId()+"[group=Person];";
                 }
             }
         }else if(method.equals("searchMessageByTitle")){
@@ -158,15 +179,22 @@ public class getGraphServlet extends HttpServlet {
             for(Object t:tripleList){
                 UnswBookTripleEntity triple = (UnswBookTripleEntity)t;
                 entityList.addAll(UnswBookEntityDAO.getEntityByEntityId(triple.getNodeFrom()));
-                result += triple.getNodeFrom()+ " -> "+triple.getNodeTo()+" [label="+triple.getEdge()+"];";
+                result += triple.getNodeFrom()+ " -> "+triple.getNodeTo()+" [label="+replaceEdge(triple.getEdge())+"];";
             }
             for(Object e:entityList){
                 UnswBookEntityEntity entity = (UnswBookEntityEntity) e;
-                if(entity.getEntityAttribute().equals("Title")){
+                if(entity.getEntityAttribute().equals("Title")&&!entity.getAttributeValue().equals("")){
                     result+=" "+entity.getEntityId()+"[group=Message,label="+entity.getAttributeValue()+"];";
                 }
-                if(entity.getEntityAttribute().equals("Name")){
+                if(entity.getEntityAttribute().equals("Title")&&entity.getAttributeValue().equals("")){
+                    result+=" "+entity.getEntityId()+"[group=Message];";
+                }
+
+                if(entity.getEntityAttribute().equals("Name")&&!entity.getAttributeValue().equals("")){
                     result+=" "+entity.getEntityId()+"[group=Person,label="+entity.getAttributeValue()+"];";
+                }
+                if(entity.getEntityAttribute().equals("Name")&&entity.getAttributeValue().equals("")){
+                    result+=" "+entity.getEntityId()+"[group=Person];";
                 }
             }
         }else if(method.equals("searchFriendsOfFriends")){
@@ -201,11 +229,18 @@ public class getGraphServlet extends HttpServlet {
             }
             for(Object e:entityList){
                 UnswBookEntityEntity entity = (UnswBookEntityEntity) e;
-                if(entity.getEntityAttribute().equals("Title")){
+                if(entity.getEntityAttribute().equals("Title")&&!entity.getAttributeValue().equals("")){
                     result+=" "+entity.getEntityId()+"[group=Message,label="+entity.getAttributeValue()+"];";
                 }
-                if(entity.getEntityAttribute().equals("Name")){
+                if(entity.getEntityAttribute().equals("Title")&&entity.getAttributeValue().equals("")){
+                    result+=" "+entity.getEntityId()+"[group=Message];";
+                }
+
+                if(entity.getEntityAttribute().equals("Name")&&!entity.getAttributeValue().equals("")){
                     result+=" "+entity.getEntityId()+"[group=Person,label="+entity.getAttributeValue()+"];";
+                }
+                if(entity.getEntityAttribute().equals("Name")&&entity.getAttributeValue().equals("")){
+                    result+=" "+entity.getEntityId()+"[group=Person];";
                 }
             }
 
