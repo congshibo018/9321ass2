@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "deleteServlet")
 public class deleteServlet extends HttpServlet {
@@ -23,9 +25,11 @@ public class deleteServlet extends HttpServlet {
             int mid = Integer.valueOf(request.getParameter("id"));
             UnswBookMessageDAO.delete(UnswBookMessageDAO.retrieve(mid));
 
-            UnswBookEntityEntity entity = new UnswBookEntityEntity();
-            entity.setEntityId("M"+mid);
-            UnswBookEntityDAO.delete(entity);
+            List entityList = UnswBookEntityDAO.getEntityByEntityId("M"+mid);
+            for(Object e :entityList){
+                UnswBookEntityEntity entity = (UnswBookEntityEntity) e;
+                UnswBookEntityDAO.delete(entity);
+            }
 
             UnswBookTripleDAO.deleteRelated("M"+mid);
         }
